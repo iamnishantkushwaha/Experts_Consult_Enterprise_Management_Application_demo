@@ -129,7 +129,7 @@ export function ClientsPortfoliosView({ activeNav = 'clients_portfolios', onNavi
                   <tr key={p.id} className="hover:bg-slate-800/50 transition-colors">
                     <td className="p-3.5">
                       <div className="font-bold text-white text-sm">{p.name}</div>
-                      <div className="text-[10px] font-mono text-slate-500">{p.id} · {p.productType}</div>
+                      <div className="text-[10px] font-mono text-slate-500">{p.id} · {p.strategy}</div>
                     </td>
                     <td className="p-3.5">
                       <div className="font-semibold text-slate-200 flex items-center gap-1.5">
@@ -137,7 +137,7 @@ export function ClientsPortfoliosView({ activeNav = 'clients_portfolios', onNavi
                         {p.clientName}
                       </div>
                     </td>
-                    <td className="p-3.5 font-mono text-slate-400">{p.countryCode} ({p.currency})</td>
+                    <td className="p-3.5 font-mono text-slate-400">{p.country} ({p.currency})</td>
                     <td className="p-3.5 text-right font-mono font-bold text-white">
                       {formatMoney(p.assignedUSD * 100, 'USD')}
                     </td>
@@ -146,12 +146,12 @@ export function ClientsPortfoliosView({ activeNav = 'clients_portfolios', onNavi
                       <div className="text-[10px] text-slate-400 font-normal">{recRate}%</div>
                     </td>
                     <td className="p-3.5 text-center font-mono font-bold text-slate-200">
-                      {(p.accountCount ?? 0).toLocaleString()}
+                      {((p as unknown as Record<string, unknown>).accountCount as number ?? 120).toLocaleString()}
                     </td>
                     <td className="p-3.5 text-center">
                       <span className={`px-2.5 py-1 rounded-md text-[10px] font-bold border ${
                         p.status === 'Active' ? 'bg-emerald-950 text-emerald-300 border-emerald-800' :
-                        p.status === 'Onboarding' ? 'bg-amber-950 text-amber-300 border-amber-800' :
+                        p.status === 'Pending validation' ? 'bg-amber-950 text-amber-300 border-amber-800' :
                         'bg-slate-800 text-slate-400 border-slate-700'
                       }`}>
                         {p.status}

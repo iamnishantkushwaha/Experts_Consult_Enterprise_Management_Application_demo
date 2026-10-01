@@ -5,7 +5,7 @@ import { Briefcase } from 'lucide-react';
 import { useAppStore } from '@/lib/store';
 import { formatMoney } from '@/lib/mock-data';
 
-export function ClientAccountsView({ onNavigate }: { onNavigate?: (view: string) => void }) {
+export function ClientAccountsView({ onNavigate }: { onNavigate?: (view: string, data?: Record<string, unknown>) => void }) {
   const accounts = useAppStore((s) => s.accounts);
 
   return (
@@ -34,10 +34,10 @@ export function ClientAccountsView({ onNavigate }: { onNavigate?: (view: string)
             <tbody className="divide-y divide-slate-800 font-mono">
               {accounts.map(a => (
                 <tr key={a.id} className="hover:bg-slate-800/50">
-                  <td className="p-3 font-bold text-[#0E9F8E]">{a.accountNumber}</td>
+                  <td className="p-3 font-bold text-[#0E9F8E]">{a.id}</td>
                   <td className="p-3 font-sans font-semibold text-white">{a.debtorName}</td>
                   <td className="p-3 text-right font-bold text-white">{formatMoney(a.balanceMinor, a.currency)}</td>
-                  <td className="p-3 text-center text-slate-400">{a.agingDays} days</td>
+                  <td className="p-3 text-center text-slate-400">{a.agingBucket}</td>
                   <td className="p-3 text-center font-sans">
                     <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-800 text-slate-300 border border-slate-700">
                       {a.status}

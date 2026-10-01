@@ -8,11 +8,11 @@ export function ComplianceDashboardView({ onNavigate }: { onNavigate?: (view: st
   const countries = useAppStore((s) => s.countries);
   const complaints = useAppStore((s) => s.complaints);
   const incidents = useAppStore((s) => s.incidents);
-  const complianceRequirements = useAppStore((s) => s.complianceRequirements);
+  const complianceReqs = useAppStore((s) => s.complianceReqs);
 
   const openComplaints = complaints.filter(c => c.status !== 'Closed');
   const highSeverity = complaints.filter(c => c.severity === 'High' && c.status !== 'Closed');
-  const expiringReqs = complianceRequirements.filter(r => r.status === 'Expiring' || r.status === 'Missing');
+  const expiringReqs = complianceReqs.filter(r => r.status === 'Expiring' || r.status === 'Due for review');
   const openIncidents = incidents.filter(i => i.status !== 'Closed');
 
   return (
@@ -65,8 +65,8 @@ export function ComplianceDashboardView({ onNavigate }: { onNavigate?: (view: st
             </thead>
             <tbody className="divide-y divide-slate-800">
               {countries.map(c => {
-                const reqs = complianceRequirements.filter(r => r.countryCode === c.code);
-                const valid = reqs.filter(r => r.status === 'Valid').length;
+                const reqs = complianceReqs.filter((r: { countryCode: string; status: string }) => r.countryCode === c.code);
+                const valid = reqs.filter((r: { countryCode: string; status: string }) => r.status === 'Valid').length;
                 const total = reqs.length;
                 return (
                   <tr key={c.code} className="hover:bg-slate-800/50 transition-colors">
