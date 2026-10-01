@@ -5,7 +5,7 @@ import { CheckSquare } from 'lucide-react';
 import { useAppStore } from '@/lib/store';
 import { formatMoney } from '@/lib/mock-data';
 
-export function PromisesPlansView({ onNavigate }: { onNavigate?: (view: string) => void }) {
+export function PromisesPlansView({ onNavigate }: { onNavigate?: (view: string, data?: Record<string, unknown>) => void }) {
   const accounts = useAppStore((s) => s.accounts);
   const ptpAccounts = accounts.filter(a => a.status.toLowerCase().includes('promise') || a.status.toLowerCase().includes('plan') || a.status.toLowerCase().includes('disputed'));
 
@@ -53,7 +53,7 @@ export function PromisesPlansView({ onNavigate }: { onNavigate?: (view: string) 
               {ptpAccounts.map(a => (
                 <tr key={a.id} className="hover:bg-slate-800/50">
                   <td className="p-3 font-semibold text-white">{a.debtorName}</td>
-                  <td className="p-3 font-mono text-[#0E9F8E]">{a.accountNumber}</td>
+                  <td className="p-3 font-mono text-[#0E9F8E]">{a.id}</td>
                   <td className="p-3 text-slate-300">{a.status}</td>
                   <td className="p-3 text-right font-mono font-bold text-white">{formatMoney(a.balanceMinor, a.currency)}</td>
                   <td className="p-3 font-mono text-slate-400">2026-10-01</td>

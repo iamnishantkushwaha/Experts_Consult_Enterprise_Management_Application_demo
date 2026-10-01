@@ -3,7 +3,7 @@
 import React from 'react';
 import { AlertCircle } from 'lucide-react';
 
-export function EscalationsView({ onNavigate }: { onNavigate?: (view: string) => void }) {
+export function EscalationsView({ onNavigate }: { onNavigate?: (view: string, data?: Record<string, unknown>) => void }) {
 
   const escalations = [
     { id: 'ESC-001', debtor: 'Kofi Mensah', account: 'ACC-100232', reason: 'Broken promise (2 days overdue)', severity: 'Medium', officer: 'Ama Darko' },

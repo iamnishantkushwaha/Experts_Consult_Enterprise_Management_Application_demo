@@ -4,7 +4,7 @@ import React from 'react';
 import { ShieldCheck } from 'lucide-react';
 import { useAppStore } from '@/lib/store';
 
-export function QualityAssuranceView({ onNavigate }: { onNavigate?: (view: string) => void }) {
+export function QualityAssuranceView({ onNavigate }: { onNavigate?: (view: string, data?: Record<string, unknown>) => void }) {
   const accounts = useAppStore((s) => s.accounts);
 
   const qaAudits = [

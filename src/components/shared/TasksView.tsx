@@ -3,7 +3,7 @@
 import React from 'react';
 import { FileCheck } from 'lucide-react';
 
-export function TasksView({ onNavigate }: { onNavigate?: (view: string) => void }) {
+export function TasksView({ onNavigate }: { onNavigate?: (view: string, data?: Record<string, unknown>) => void }) {
   const tasks = [
     { id: 'TSK-1', text: 'Call Kofi Mensah — promise follow-up', due: '10:00 AM', priority: 'High', status: 'Pending', account: 'ACC-100231' },
     { id: 'TSK-2', text: 'Send plan reminder to Adwoa Trading', due: '12:00 PM', priority: 'Medium', status: 'Pending', account: 'ACC-100232' },

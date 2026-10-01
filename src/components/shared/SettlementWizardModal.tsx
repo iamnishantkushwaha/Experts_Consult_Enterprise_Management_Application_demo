@@ -18,13 +18,13 @@ export function SettlementWizardModal({ account, onClose }: SettlementWizardModa
   const clients = useAppStore((s) => s.clients);
 
   const [discountPct, setDiscountPct] = useState(30);
-  const [_settlementType, _setSettlementType] = useState<'Lump sum' | 'Structured'>('Lump sum');
-  const [_termsText, _setTermsText] = useState('Payment of settlement amount within 14 days');
-  const [_step, _setStep] = useState(1);
+  const [settlementType, setSettlementType] = useState<'Lump sum' | 'Structured'>('Lump sum');
+  const [termsText, setTermsText] = useState('Payment of settlement amount within 14 days');
+  const [step, setStep] = useState(1);
 
   const outstandingMinor = account.balanceMinor;
   const settlementMinor = Math.round(outstandingMinor * (1 - discountPct / 100));
-  const _discountMinor = outstandingMinor - settlementMinor;
+  const discountMinor = outstandingMinor - settlementMinor;
 
   const client = clients.find((c) => c.name === account.clientName);
   const needsClientApproval = !!(client?.approvalOverlay && discountPct > 25);

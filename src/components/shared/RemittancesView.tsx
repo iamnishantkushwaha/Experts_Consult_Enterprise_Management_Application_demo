@@ -36,12 +36,12 @@ export function RemittancesView({ onNavigate }: { onNavigate?: (view: string) =>
               <tr key={r.id} className="hover:bg-slate-800/50">
                 <td className="p-3.5 font-mono font-bold text-white">{r.id}</td>
                 <td className="p-3.5 font-semibold text-slate-200">{r.clientName}</td>
-                <td className="p-3.5 text-right font-mono font-bold text-white">{formatMoney(r.grossCollectedMinor, r.currency)}</td>
-                <td className="p-3.5 text-right font-mono text-amber-400">-{formatMoney(r.feeDeductedMinor, r.currency)}</td>
-                <td className="p-3.5 text-right font-mono font-bold text-[#0E9F8E]">{formatMoney(r.netRemittedMinor, r.currency)}</td>
+                <td className="p-3.5 text-right font-mono font-bold text-white">{formatMoney(r.recoveredMinor, r.currency)}</td>
+                <td className="p-3.5 text-right font-mono text-amber-400">-{formatMoney(r.feesMinor, r.currency)}</td>
+                <td className="p-3.5 text-right font-mono font-bold text-[#0E9F8E]">{formatMoney(r.netMinor, r.currency)}</td>
                 <td className="p-3.5 text-center">
                   <span className={`px-2.5 py-1 rounded-md text-[10px] font-bold border ${
-                    r.status === 'Approved' ? 'bg-emerald-950 text-emerald-300 border-emerald-800' :
+                    r.status === 'Remitted' ? 'bg-emerald-950 text-emerald-300 border-emerald-800' :
                     r.status === 'Pending approval' ? 'bg-amber-950 text-amber-300 border-amber-800' :
                     'bg-slate-800 text-slate-400 border-slate-700'
                   }`}>

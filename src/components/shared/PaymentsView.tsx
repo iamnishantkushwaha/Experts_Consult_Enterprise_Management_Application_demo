@@ -6,7 +6,7 @@ import { useAppStore } from '@/lib/store';
 import { formatMoney } from '@/lib/mock-data';
 import { PaymentStatus } from '@/lib/types';
 
-export function PaymentsView({ onNavigate }: { onNavigate?: (view: string) => void }) {
+export function PaymentsView({ onNavigate }: { onNavigate?: (view: string, data?: Record<string, unknown>) => void }) {
   const payments = useAppStore((s) => s.payments);
   const [searchQ, setSearchQ] = useState('');
   const [statusFilter, setStatusFilter] = useState<PaymentStatus | 'All'>('All');

@@ -9,7 +9,7 @@ export function FeesBillingView({ onNavigate }: { onNavigate?: (view: string) =>
   const portfolios = useAppStore((s) => s.portfolios);
   const remittances = useAppStore((s) => s.remittances);
 
-  const totalFeesEarned = remittances.reduce((acc, r) => acc + (r.feeMinor || 0), 0);
+  const totalFeesEarned = remittances.reduce((acc, r) => acc + (r.feesMinor || 0), 0);
 
   return (
     <div className="space-y-6">

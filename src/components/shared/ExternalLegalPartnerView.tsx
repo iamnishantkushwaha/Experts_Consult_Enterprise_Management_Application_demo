@@ -33,7 +33,7 @@ export function ExternalLegalPartnerView({ activeNav = 'assigned_matters', onNav
                       <span className="font-semibold text-white text-xs">— {m.debtorName}</span>
                       <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-800 text-slate-300 border border-slate-700">{m.stage}</span>
                     </div>
-                    <div className="text-xs text-slate-400 mt-1">Claim: <strong className="text-white font-mono">{formatMoney(m.claimMinor, m.currency)}</strong> · Court: <span className="text-slate-300">{m.court}</span></div>
+                    <div className="text-xs text-slate-400 mt-1">Claim: <strong className="text-white font-mono">{formatMoney(m.claimMinor, m.currency)}</strong> · Court: <span className="text-slate-300">{m.jurisdiction}</span></div>
                   </div>
                   <button onClick={() => onNavigate?.('account_detail')} className="px-3.5 py-2 bg-[#0E9F8E] hover:bg-[#0c8879] text-white rounded-xl text-xs font-semibold">
                     Submit Filing

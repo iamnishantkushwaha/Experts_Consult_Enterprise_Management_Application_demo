@@ -5,7 +5,7 @@ import { Users } from 'lucide-react';
 import { useAppStore } from '@/lib/store';
 import { STT } from '../common/STT';
 
-export function PortfolioAllocationView({ onNavigate }: { onNavigate?: (view: string) => void }) {
+export function PortfolioAllocationView({ onNavigate }: { onNavigate?: (view: string, data?: Record<string, unknown>) => void }) {
   const accounts = useAppStore((s) => s.accounts);
   const users = useAppStore((s) => s.users);
   const [searchQuery, setSearchQuery] = useState('');
@@ -15,7 +15,7 @@ export function PortfolioAllocationView({ onNavigate }: { onNavigate?: (view: st
 
   const filtered = accounts.filter(a =>
     a.debtorName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    a.accountNumber.toLowerCase().includes(searchQuery.toLowerCase())
+    a.id.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
@@ -71,11 +71,11 @@ export function PortfolioAllocationView({ onNavigate }: { onNavigate?: (view: st
             <tbody className="divide-y divide-slate-800">
               {filtered.map(a => (
                 <tr key={a.id} className="hover:bg-slate-800/50 font-mono">
-                  <td className="p-3 font-bold text-white">{a.accountNumber}</td>
+                  <td className="p-3 font-bold text-white">{a.id}</td>
                   <td className="p-3 font-sans font-semibold text-slate-200">{a.debtorName}</td>
                   <td className="p-3 font-sans text-slate-400">{a.clientName}</td>
                   <td className="p-3 text-right font-bold text-white">{(a.balanceMinor / 100).toLocaleString()} {a.currency}</td>
-                  <td className="p-3 font-sans text-[#0E9F8E] font-semibold">{a.assignedOfficer || 'Unassigned'}</td>
+                  <td className="p-3 font-sans text-[#0E9F8E] font-semibold">{a.ownerName || 'Unassigned'}</td>
                   <td className="p-3 text-center font-sans">
                     <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-800 text-slate-300 border border-slate-700">
                       {a.status}
