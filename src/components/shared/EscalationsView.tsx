@@ -14,30 +14,30 @@ export function EscalationsView({ onNavigate }: { onNavigate?: (view: string, da
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-xl font-bold text-white flex items-center gap-2">
-          <AlertCircle className="w-6 h-6 text-amber-400" />
+        <h1 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+          <AlertCircle className="w-6 h-6 text-amber-600" />
           Manager Escalations Inbox
         </h1>
-        <p className="text-xs text-slate-400">High-priority account escalations requiring manager intervention or policy overrides.</p>
+        <p className="text-xs text-slate-600">High-priority account escalations requiring manager intervention or policy overrides.</p>
       </div>
 
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl p-6">
+      <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-xl p-6">
         <div className="space-y-3">
           {escalations.map(e => (
-            <div key={e.id} className="p-4 bg-slate-950 border border-slate-800 rounded-xl flex items-center justify-between">
+            <div key={e.id} className="p-4 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between">
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="font-mono font-bold text-white text-xs">{e.id}</span>
-                  <span className="font-semibold text-slate-200 text-xs">— {e.debtor}</span>
+                  <span className="font-mono font-bold text-slate-900 text-xs">{e.id}</span>
+                  <span className="font-semibold text-slate-800 text-xs">— {e.debtor}</span>
                   <span className={`px-2 py-0.5 rounded text-[10px] font-bold border ${
-                    e.severity === 'High' ? 'bg-rose-950 text-rose-300 border-rose-800' : 'bg-amber-950 text-amber-300 border-amber-800'
+                    e.severity === 'High' ? 'bg-rose-50 text-rose-700 border-rose-200' : 'bg-amber-50 text-amber-700 border-amber-200'
                   }`}>{e.severity}</span>
                 </div>
-                <div className="text-xs text-slate-400 mt-1">{e.reason} · Assigned Officer: <span className="text-slate-300">{e.officer}</span></div>
+                <div className="text-xs text-slate-600 mt-1">{e.reason} · Assigned Officer: <span className="text-slate-700">{e.officer}</span></div>
               </div>
               <button
                 onClick={() => onNavigate?.('account_detail', { id: e.account })}
-                className="px-3.5 py-2 bg-[#0E9F8E] hover:bg-[#0c8879] text-white rounded-xl text-xs font-semibold"
+                className="px-3.5 py-2 bg-[#2563EB] hover:bg-[#1D4ED8] text-white rounded-xl text-xs font-semibold"
               >
                 Review Escalation
               </button>

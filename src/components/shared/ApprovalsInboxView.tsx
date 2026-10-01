@@ -75,21 +75,21 @@ export function ApprovalsInboxView() {
       {/* Header */}
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="text-xl font-bold text-white flex items-center gap-2">
-            <CheckSquare className="w-6 h-6 text-[#0E9F8E]" />
+          <h1 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+            <CheckSquare className="w-6 h-6 text-[#2563EB]" />
             Approvals Inbox
           </h1>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-slate-600">
             Review financial, settlement, write-off, and operational approval requests per delegated matrix (§G6).
           </p>
         </div>
 
         {/* Tabs */}
-        <div className="flex bg-slate-900 border border-slate-800 p-1 rounded-xl text-xs font-semibold">
+        <div className="flex bg-white border border-slate-200 p-1 rounded-xl text-xs font-semibold">
           <button
             onClick={() => setActiveTab('pending')}
             className={`px-4 py-2 rounded-lg transition-all ${
-              activeTab === 'pending' ? 'bg-[#0E9F8E] text-white' : 'text-slate-400 hover:text-white'
+              activeTab === 'pending' ? 'bg-[#2563EB] text-slate-900' : 'text-slate-600 hover:text-slate-900'
             }`}
           >
             Pending for Me ({approvals.filter((a) => a.decision === 'Pending').length})
@@ -97,7 +97,7 @@ export function ApprovalsInboxView() {
           <button
             onClick={() => setActiveTab('decided')}
             className={`px-4 py-2 rounded-lg transition-all ${
-              activeTab === 'decided' ? 'bg-[#0E9F8E] text-white' : 'text-slate-400 hover:text-white'
+              activeTab === 'decided' ? 'bg-[#2563EB] text-slate-900' : 'text-slate-600 hover:text-slate-900'
             }`}
           >
             Decided History
@@ -106,10 +106,10 @@ export function ApprovalsInboxView() {
       </div>
 
       {/* Approvals Table */}
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+      <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-xl">
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs text-slate-300">
-            <thead className="bg-slate-950 text-slate-400 font-semibold border-b border-slate-800">
+          <table className="w-full text-left text-xs text-slate-700">
+            <thead className="bg-slate-50 text-slate-600 font-semibold border-b border-slate-200">
               <tr>
                 <th className="p-3.5">Type</th>
                 <th className="p-3.5">Object Ref</th>
@@ -121,34 +121,34 @@ export function ApprovalsInboxView() {
                 <th className="p-3.5 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800">
+            <tbody className="divide-y divide-slate-200">
               {filteredApprovals.map((app) => {
                 const isBlockedForManager = currentRole === 'recovery_manager' && app.thresholdLabel.includes('30%');
 
                 return (
-                  <tr key={app.id} className="hover:bg-slate-800/50 transition-colors">
+                  <tr key={app.id} className="hover:bg-slate-100/50 transition-colors">
                     <td className="p-3.5">
-                      <span className="px-2.5 py-1 rounded-md text-[11px] font-bold bg-[#0E9F8E]/20 text-[#0E9F8E] border border-[#0E9F8E]/30">
+                      <span className="px-2.5 py-1 rounded-md text-[11px] font-bold bg-[#2563EB]/20 text-[#2563EB] border border-[#2563EB]/30">
                         {app.objectType}
                       </span>
                     </td>
-                    <td className="p-3.5 font-bold text-white font-mono">{app.objectId}</td>
+                    <td className="p-3.5 font-bold text-slate-900 font-mono">{app.objectId}</td>
                     <td className="p-3.5">{app.requestedBy}</td>
-                    <td className="p-3.5 font-mono font-bold text-white">
+                    <td className="p-3.5 font-mono font-bold text-slate-900">
                       {formatMoney(app.amountMinor, app.currency)}
                     </td>
                     <td className="p-3.5">
-                      <span className="text-slate-300 font-medium">{app.thresholdLabel}</span>
+                      <span className="text-slate-700 font-medium">{app.thresholdLabel}</span>
                     </td>
-                    <td className="p-3.5 font-mono text-slate-400">{app.ageDays}d ago</td>
+                    <td className="p-3.5 font-mono text-slate-600">{app.ageDays}d ago</td>
                     <td className="p-3.5">
                       <span
                         className={`px-2.5 py-1 rounded-md text-[11px] font-bold ${
                           app.decision === 'Approved'
-                            ? 'bg-emerald-950 text-emerald-300 border border-emerald-800'
+                            ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
                             : app.decision === 'Rejected'
-                            ? 'bg-rose-950 text-rose-300 border border-rose-800'
-                            : 'bg-amber-950 text-amber-300 border border-amber-800'
+                            ? 'bg-rose-50 text-rose-700 border border-rose-200'
+                            : 'bg-amber-50 text-amber-700 border border-amber-200'
                         }`}
                       >
                         {app.decision}
@@ -161,14 +161,14 @@ export function ApprovalsInboxView() {
                             disabled={isBlockedForManager}
                             onClick={() => handleApproveClick(app)}
                             title={isBlockedForManager ? 'Above your limit (25%) — COO / Operations must approve' : undefined}
-                            className="px-3 py-1.5 bg-[#0E9F8E] hover:bg-[#0c8879] disabled:opacity-40 disabled:cursor-not-allowed text-white font-semibold rounded-xl text-xs transition-colors"
+                            className="px-3 py-1.5 bg-[#2563EB] hover:bg-[#1D4ED8] disabled:opacity-40 disabled:cursor-not-allowed text-white font-semibold rounded-xl text-xs transition-colors"
                           >
                             Approve
                           </button>
                           {isBlockedForManager && (
                             <button
                               onClick={() => handleEscalateClick(app)}
-                              className="px-3 py-1.5 bg-amber-600 hover:bg-amber-500 text-white font-semibold rounded-xl text-xs transition-colors"
+                              className="px-3 py-1.5 bg-amber-600 hover:bg-amber-500 text-slate-900 font-semibold rounded-xl text-xs transition-colors"
                             >
                               Escalate →
                             </button>
@@ -178,7 +178,7 @@ export function ApprovalsInboxView() {
                               setSelectedApproval(app);
                               setShowRejectModal(true);
                             }}
-                            className="px-3 py-1.5 bg-slate-800 hover:bg-rose-950/60 text-slate-300 hover:text-rose-300 font-semibold rounded-xl text-xs border border-slate-700 transition-colors"
+                            className="px-3 py-1.5 bg-slate-100 hover:bg-rose-50/60 text-slate-700 hover:text-rose-700 font-semibold rounded-xl text-xs border border-slate-300 transition-colors"
                           >
                             Reject
                           </button>
@@ -212,20 +212,20 @@ export function ApprovalsInboxView() {
 
       {/* Reject Modal */}
       {showRejectModal && selectedApproval && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
-          <div className="w-full max-w-md bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4 shadow-2xl">
-            <h3 className="text-base font-bold text-white">Reject Approval Request</h3>
-            <p className="text-xs text-slate-400">
-              Rejecting request <span className="font-mono text-white">{selectedApproval.objectId}</span>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-50/80 backdrop-blur-sm">
+          <div className="w-full max-w-md bg-white border border-slate-200 rounded-2xl p-6 space-y-4 shadow-2xl">
+            <h3 className="text-base font-bold text-slate-900">Reject Approval Request</h3>
+            <p className="text-xs text-slate-600">
+              Rejecting request <span className="font-mono text-slate-900">{selectedApproval.objectId}</span>
             </p>
             <div className="space-y-1.5 text-xs">
-              <label className="block text-slate-300 font-semibold">Rejection Reason (Required)</label>
+              <label className="block text-slate-700 font-semibold">Rejection Reason (Required)</label>
               <textarea
                 value={rejectReason}
                 onChange={(e) => setRejectReason(e.target.value)}
                 placeholder="State why this proposal is rejected..."
                 rows={3}
-                className="w-full bg-slate-950 border border-slate-700 rounded-xl p-2.5 text-white"
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5 text-slate-900"
               />
             </div>
             <div className="flex justify-end gap-3 pt-2">
@@ -234,7 +234,7 @@ export function ApprovalsInboxView() {
                   setShowRejectModal(false);
                   setSelectedApproval(null);
                 }}
-                className="px-4 py-2 text-xs text-slate-400 hover:text-white"
+                className="px-4 py-2 text-xs text-slate-600 hover:text-slate-900"
               >
                 Cancel
               </button>

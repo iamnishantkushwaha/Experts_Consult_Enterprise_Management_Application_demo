@@ -20,23 +20,23 @@ export function NotificationsView({ onNavigateRecord }: NotificationsViewProps) 
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-xl font-bold text-white flex items-center gap-2">
-            <Bell className="w-6 h-6 text-[#0E9F8E]" />
+          <h1 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+            <Bell className="w-6 h-6 text-[#2563EB]" />
             Notifications & Alerts
           </h1>
-          <p className="text-xs text-slate-400">System alerts, approval requests, and operational notifications.</p>
+          <p className="text-xs text-slate-600">System alerts, approval requests, and operational notifications.</p>
         </div>
 
         <button
           onClick={markAllNotificationsRead}
-          className="flex items-center gap-1.5 px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold rounded-xl border border-slate-700 transition-colors"
+          className="flex items-center gap-1.5 px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold rounded-xl border border-slate-300 transition-colors"
         >
-          <CheckCheck className="w-4 h-4 text-[#0E9F8E]" />
+          <CheckCheck className="w-4 h-4 text-[#2563EB]" />
           <span>Mark All as Read</span>
         </button>
       </div>
 
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 space-y-3">
+      <div className="bg-white border border-slate-200 rounded-2xl p-4 space-y-3">
         {roleNotifs.map((n) => (
           <div
             key={n.id}
@@ -46,23 +46,23 @@ export function NotificationsView({ onNavigateRecord }: NotificationsViewProps) 
             }}
             className={`p-4 rounded-xl border text-xs cursor-pointer transition-all flex items-start justify-between gap-4 ${
               n.read
-                ? 'bg-slate-950/40 border-slate-800/80 text-slate-400'
-                : 'bg-slate-950 border-slate-700 text-slate-200 shadow-md'
+                ? 'bg-slate-50/40 border-slate-200/80 text-slate-600'
+                : 'bg-slate-50 border-slate-300 text-slate-800 shadow-md'
             }`}
           >
             <div className="space-y-1">
               <div className="flex items-center gap-2">
-                <span className="font-bold text-white text-sm">{n.title}</span>
-                <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-[#0E9F8E]/20 text-[#0E9F8E]">
+                <span className="font-bold text-slate-900 text-sm">{n.title}</span>
+                <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-[#2563EB]/20 text-[#2563EB]">
                   {n.type}
                 </span>
               </div>
-              <p className="text-xs text-slate-400 italic">{n.preview}</p>
+              <p className="text-xs text-slate-600 italic">{n.preview}</p>
             </div>
 
             <div className="flex items-center gap-3 shrink-0">
               <span className="text-[11px] text-slate-500 font-mono">{n.relativeTime}</span>
-              {!n.read && <div className="w-2.5 h-2.5 rounded-full bg-[#0E9F8E]"></div>}
+              {!n.read && <div className="w-2.5 h-2.5 rounded-full bg-[#2563EB]"></div>}
             </div>
           </div>
         ))}

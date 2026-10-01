@@ -56,24 +56,24 @@ export function SettlementWizardModal({ account, onClose }: SettlementWizardModa
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md animate-in fade-in">
-      <div className="w-full max-w-xl bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl overflow-hidden animate-in zoom-in-95">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-50/80 backdrop-blur-md animate-in fade-in">
+      <div className="w-full max-w-xl bg-white border border-slate-200 rounded-3xl shadow-2xl overflow-hidden animate-in zoom-in-95">
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-slate-950/40">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 bg-slate-50/40">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-[#0E9F8E]/20 text-[#0E9F8E] flex items-center justify-center border border-[#0E9F8E]/30">
+            <div className="w-10 h-10 rounded-2xl bg-[#2563EB]/20 text-[#2563EB] flex items-center justify-center border border-[#2563EB]/30">
               <Scale className="w-5 h-5" />
             </div>
             <div>
-              <h2 className="text-base font-bold text-white">Propose Settlement</h2>
-              <p className="text-xs text-slate-400">
+              <h2 className="text-base font-bold text-slate-900">Propose Settlement</h2>
+              <p className="text-xs text-slate-600">
                 {account.debtorName} ({account.id})
               </p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800"
+            className="p-1.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100"
           >
             <X className="w-5 h-5" />
           </button>
@@ -82,10 +82,10 @@ export function SettlementWizardModal({ account, onClose }: SettlementWizardModa
         {/* Form Body */}
         <div className="p-6 space-y-6">
           {/* Discount Slider */}
-          <div className="bg-slate-950 p-5 rounded-2xl border border-slate-800 space-y-4">
+          <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-4">
             <div className="flex justify-between items-center">
-              <span className="text-xs font-bold text-slate-300">Discount Percentage</span>
-              <span className="text-xl font-extrabold text-[#0E9F8E] font-mono">{discountPct}%</span>
+              <span className="text-xs font-bold text-slate-700">Discount Percentage</span>
+              <span className="text-xl font-extrabold text-[#2563EB] font-mono">{discountPct}%</span>
             </div>
 
             <input
@@ -95,23 +95,23 @@ export function SettlementWizardModal({ account, onClose }: SettlementWizardModa
               step="5"
               value={discountPct}
               onChange={(e) => setDiscountPct(parseInt(e.target.value))}
-              className="w-full accent-[#0E9F8E] bg-slate-800 h-2 rounded-lg cursor-pointer"
+              className="w-full accent-[#2563EB] bg-slate-100 h-2 rounded-lg cursor-pointer"
             />
 
             <div className="grid grid-cols-2 gap-3 pt-2 text-xs">
-              <div className="bg-slate-900 p-2.5 rounded-xl border border-slate-800">
-                <span className="text-[10px] text-slate-400 uppercase font-semibold block">
+              <div className="bg-white p-2.5 rounded-xl border border-slate-200">
+                <span className="text-[10px] text-slate-600 uppercase font-semibold block">
                   Original Balance
                 </span>
-                <span className="text-sm font-bold text-white font-mono">
+                <span className="text-sm font-bold text-slate-900 font-mono">
                   {formatMoney(outstandingMinor, account.currency)}
                 </span>
               </div>
-              <div className="bg-slate-900 p-2.5 rounded-xl border border-slate-800">
-                <span className="text-[10px] text-[#0E9F8E] uppercase font-semibold block">
+              <div className="bg-white p-2.5 rounded-xl border border-slate-200">
+                <span className="text-[10px] text-[#2563EB] uppercase font-semibold block">
                   Proposed Settlement
                 </span>
-                <span className="text-sm font-bold text-[#0E9F8E] font-mono">
+                <span className="text-sm font-bold text-[#2563EB] font-mono">
                   {formatMoney(settlementMinor, account.currency)}
                 </span>
               </div>
@@ -120,39 +120,39 @@ export function SettlementWizardModal({ account, onClose }: SettlementWizardModa
 
           {/* Authority Chain Simulation Panel (G6 Matrix) */}
           <div className="space-y-3">
-            <span className="text-xs font-bold text-slate-300 uppercase tracking-wider block">
+            <span className="text-xs font-bold text-slate-700 uppercase tracking-wider block">
               Authority Routing Check (§7.5, §23.2)
             </span>
-            <div className="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-2.5 text-xs">
+            <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2.5 text-xs">
               <div className="flex items-center justify-between">
-                <span className="text-slate-400">Recovery Officer (Up to 10%)</span>
+                <span className="text-slate-600">Recovery Officer (Up to 10%)</span>
                 {isOfficerLimit ? (
-                  <span className="text-emerald-400 font-semibold">✓ Within Limit</span>
+                  <span className="text-emerald-600 font-semibold">✓ Within Limit</span>
                 ) : (
-                  <span className="text-rose-400 font-semibold">✗ Exceeds 10% limit</span>
+                  <span className="text-rose-600 font-semibold">✗ Exceeds 10% limit</span>
                 )}
               </div>
 
               <div className="flex items-center justify-between">
-                <span className="text-slate-400">Recovery Manager (Up to 25%)</span>
+                <span className="text-slate-600">Recovery Manager (Up to 25%)</span>
                 {isManagerLimit ? (
-                  <span className="text-emerald-400 font-semibold">✓ Within Limit</span>
+                  <span className="text-emerald-600 font-semibold">✓ Within Limit</span>
                 ) : (
-                  <span className="text-rose-400 font-semibold">✗ Exceeds 25% limit</span>
+                  <span className="text-rose-600 font-semibold">✗ Exceeds 25% limit</span>
                 )}
               </div>
 
               <div className="flex items-center justify-between">
-                <span className="text-slate-400">COO / Operations (Up to 40%)</span>
+                <span className="text-slate-600">COO / Operations (Up to 40%)</span>
                 {isCooLimit ? (
-                  <span className="text-emerald-400 font-semibold">✓ Within Limit (COO)</span>
+                  <span className="text-emerald-600 font-semibold">✓ Within Limit (COO)</span>
                 ) : (
-                  <span className="text-rose-400 font-semibold">Requires CEO Sign-off</span>
+                  <span className="text-rose-600 font-semibold">Requires CEO Sign-off</span>
                 )}
               </div>
 
               {needsClientApproval && (
-                <div className="pt-2 border-t border-slate-800 flex items-center justify-between text-amber-300 bg-amber-950/30 p-2 rounded-xl">
+                <div className="pt-2 border-t border-slate-200 flex items-center justify-between text-amber-700 bg-amber-50/30 p-2 rounded-xl">
                   <span className="flex items-center gap-1.5 font-medium">
                     <Building2 className="w-4 h-4" /> Client Approval Overlay ({account.clientName})
                   </span>
@@ -164,20 +164,20 @@ export function SettlementWizardModal({ account, onClose }: SettlementWizardModa
         </div>
 
         {/* Footer */}
-        <div className="flex items-center justify-between px-6 py-4 bg-slate-950/60 border-t border-slate-800">
-          <span className="text-xs text-slate-400">
-            Will route to: <strong className="text-white">{nextApprover}</strong>
+        <div className="flex items-center justify-between px-6 py-4 bg-slate-50/60 border-t border-slate-200">
+          <span className="text-xs text-slate-600">
+            Will route to: <strong className="text-slate-900">{nextApprover}</strong>
           </span>
           <div className="flex gap-3">
             <button
               onClick={onClose}
-              className="px-4 py-2 text-xs font-semibold text-slate-400 hover:text-white"
+              className="px-4 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900"
             >
               Cancel
             </button>
             <button
               onClick={handleSubmit}
-              className="flex items-center gap-2 px-5 py-2.5 bg-[#0E9F8E] hover:bg-[#0c8879] text-white text-xs font-semibold rounded-xl transition-all shadow-lg shadow-[#0E9F8E]/20"
+              className="flex items-center gap-2 px-5 py-2.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs font-semibold rounded-xl transition-all shadow-lg shadow-[#2563EB]/20"
             >
               Submit Settlement Proposal
               <ArrowRight className="w-4 h-4" />

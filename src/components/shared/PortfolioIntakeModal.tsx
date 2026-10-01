@@ -43,18 +43,18 @@ export function PortfolioIntakeModal({ onClose }: { onClose: () => void }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl animate-in fade-in zoom-in-95">
+    <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-sm flex items-center justify-center p-4">
+      <div className="bg-white border border-slate-200 rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl animate-in fade-in zoom-in-95">
         {/* Header */}
-        <div className="p-5 border-b border-slate-800 flex justify-between items-center bg-slate-950">
+        <div className="p-5 border-b border-slate-200 flex justify-between items-center bg-slate-50">
           <div>
-            <h2 className="text-base font-bold text-white flex items-center gap-2">
-              <Upload className="w-5 h-5 text-[#0E9F8E]" />
+            <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
+              <Upload className="w-5 h-5 text-[#2563EB]" />
               Portfolio Intake Wizard
             </h2>
-            <p className="text-xs text-slate-400">Step {step} of 3 — Upload, Validate &amp; Assign Debt Portfolio</p>
+            <p className="text-xs text-slate-600">Step {step} of 3 — Upload, Validate &amp; Assign Debt Portfolio</p>
           </div>
-          <button onClick={onClose} className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800">
+          <button onClick={onClose} className="p-1 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100">
             <X className="w-5 h-5" />
           </button>
         </div>
@@ -64,11 +64,11 @@ export function PortfolioIntakeModal({ onClose }: { onClose: () => void }) {
           {step === 1 && (
             <div className="space-y-4">
               <div>
-                <label className="block text-xs font-bold text-slate-300 mb-1.5">Select Client Entity</label>
+                <label className="block text-xs font-bold text-slate-700 mb-1.5">Select Client Entity</label>
                 <select
                   value={selectedClient}
                   onChange={(e) => setSelectedClient(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200 focus:ring-2 focus:ring-[#0E9F8E]"
+                  className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-800 focus:ring-2 focus:ring-[#2563EB]"
                 >
                   <option value="CLI-VOLTA">Volta Bank Plc (GH)</option>
                   <option value="CLI-SAVANNAH">Savannah Telecom (KE)</option>
@@ -76,21 +76,21 @@ export function PortfolioIntakeModal({ onClose }: { onClose: () => void }) {
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-300 mb-1.5">Portfolio Name</label>
+                <label className="block text-xs font-bold text-slate-700 mb-1.5">Portfolio Name</label>
                 <input
                   type="text"
                   value={portfolioName}
                   onChange={(e) => setPortfolioName(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200 focus:ring-2 focus:ring-[#0E9F8E]"
+                  className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-800 focus:ring-2 focus:ring-[#2563EB]"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-300 mb-1.5">Upload Data File (.xlsx, .csv)</label>
-                <div className="border-2 border-dashed border-slate-700 hover:border-[#0E9F8E] bg-slate-950 rounded-2xl p-6 text-center cursor-pointer transition-colors">
-                  <FileSpreadsheet className="w-10 h-10 text-[#0E9F8E] mx-auto mb-2" />
-                  <div className="text-xs font-bold text-white">{fileName}</div>
-                  <div className="text-[11px] text-slate-400 mt-1">450 account rows detected · 2.4 MB</div>
+                <label className="block text-xs font-bold text-slate-700 mb-1.5">Upload Data File (.xlsx, .csv)</label>
+                <div className="border-2 border-dashed border-slate-300 hover:border-[#2563EB] bg-slate-50 rounded-2xl p-6 text-center cursor-pointer transition-colors">
+                  <FileSpreadsheet className="w-10 h-10 text-[#2563EB] mx-auto mb-2" />
+                  <div className="text-xs font-bold text-slate-900">{fileName}</div>
+                  <div className="text-[11px] text-slate-600 mt-1">450 account rows detected · 2.4 MB</div>
                 </div>
               </div>
             </div>
@@ -98,14 +98,14 @@ export function PortfolioIntakeModal({ onClose }: { onClose: () => void }) {
 
           {step === 2 && (
             <div className="space-y-4">
-              <div className="flex items-center justify-between p-3 bg-[#0E9F8E]/10 border border-[#0E9F8E]/30 rounded-xl text-xs text-[#0E9F8E]">
+              <div className="flex items-center justify-between p-3 bg-[#2563EB]/10 border border-[#2563EB]/30 rounded-xl text-xs text-[#2563EB]">
                 <span className="font-semibold">Automated Schema Validation Complete</span>
                 <span className="font-mono font-bold">449 Valid / 1 Warning</span>
               </div>
 
-              <div className="bg-slate-950 border border-slate-800 rounded-xl overflow-hidden">
-                <table className="w-full text-left text-xs text-slate-300">
-                  <thead className="bg-slate-900 text-slate-400 font-semibold">
+              <div className="bg-slate-50 border border-slate-200 rounded-xl overflow-hidden">
+                <table className="w-full text-left text-xs text-slate-700">
+                  <thead className="bg-white text-slate-600 font-semibold">
                     <tr>
                       <th className="p-3">Acc #</th>
                       <th className="p-3">Debtor</th>
@@ -113,15 +113,15 @@ export function PortfolioIntakeModal({ onClose }: { onClose: () => void }) {
                       <th className="p-3">Validation Status</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-800 font-mono">
+                  <tbody className="divide-y divide-slate-200 font-mono">
                     {sampleRows.map((r, i) => (
                       <tr key={i}>
-                        <td className="p-3 text-white">{r.accountNo}</td>
+                        <td className="p-3 text-slate-900">{r.accountNo}</td>
                         <td className="p-3">{r.debtor}</td>
-                        <td className="p-3 text-white">{r.amount}</td>
+                        <td className="p-3 text-slate-900">{r.amount}</td>
                         <td className="p-3">
                           <span className={`text-[10px] font-bold px-2 py-0.5 rounded border ${
-                            r.status.startsWith('Valid') ? 'bg-emerald-950 text-emerald-300 border-emerald-800' : 'bg-amber-950 text-amber-300 border-amber-800'
+                            r.status.startsWith('Valid') ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 'bg-amber-50 text-amber-700 border-amber-200'
                           }`}>
                             {r.status}
                           </span>
@@ -135,24 +135,24 @@ export function PortfolioIntakeModal({ onClose }: { onClose: () => void }) {
           )}
 
           {step === 3 && (
-            <div className="space-y-4 text-xs text-slate-300">
-              <div className="p-4 bg-slate-950 border border-slate-800 rounded-xl space-y-2">
-                <div className="font-bold text-white text-sm">Intake Summary Confirmation</div>
-                <div className="flex justify-between border-b border-slate-800 py-1.5">
-                  <span className="text-slate-400">Target Client</span>
-                  <span className="font-semibold text-white">Volta Bank Plc</span>
+            <div className="space-y-4 text-xs text-slate-700">
+              <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
+                <div className="font-bold text-slate-900 text-sm">Intake Summary Confirmation</div>
+                <div className="flex justify-between border-b border-slate-200 py-1.5">
+                  <span className="text-slate-600">Target Client</span>
+                  <span className="font-semibold text-slate-900">Volta Bank Plc</span>
                 </div>
-                <div className="flex justify-between border-b border-slate-800 py-1.5">
-                  <span className="text-slate-400">Portfolio Name</span>
-                  <span className="font-semibold text-white">{portfolioName}</span>
+                <div className="flex justify-between border-b border-slate-200 py-1.5">
+                  <span className="text-slate-600">Portfolio Name</span>
+                  <span className="font-semibold text-slate-900">{portfolioName}</span>
                 </div>
-                <div className="flex justify-between border-b border-slate-800 py-1.5">
-                  <span className="text-slate-400">Total Accounts</span>
-                  <span className="font-mono font-bold text-white">450</span>
+                <div className="flex justify-between border-b border-slate-200 py-1.5">
+                  <span className="text-slate-600">Total Accounts</span>
+                  <span className="font-mono font-bold text-slate-900">450</span>
                 </div>
                 <div className="flex justify-between py-1.5">
-                  <span className="text-slate-400">Default Allocation Strategy</span>
-                  <span className="font-semibold text-[#0E9F8E]">Round-Robin SLA (Tier 1 Officers)</span>
+                  <span className="text-slate-600">Default Allocation Strategy</span>
+                  <span className="font-semibold text-[#2563EB]">Round-Robin SLA (Tier 1 Officers)</span>
                 </div>
               </div>
             </div>
@@ -160,18 +160,18 @@ export function PortfolioIntakeModal({ onClose }: { onClose: () => void }) {
         </div>
 
         {/* Footer */}
-        <div className="p-4 border-t border-slate-800 bg-slate-950 flex justify-between items-center">
+        <div className="p-4 border-t border-slate-200 bg-slate-50 flex justify-between items-center">
           <button
             onClick={() => setStep((s) => (s > 1 ? (s - 1) as 1 | 2 | 3 : 1))}
             disabled={step === 1}
-            className="px-4 py-2 bg-slate-800 hover:bg-slate-700 disabled:opacity-50 text-slate-300 text-xs font-semibold rounded-xl"
+            className="px-4 py-2 bg-slate-100 hover:bg-slate-200 disabled:opacity-50 text-slate-700 text-xs font-semibold rounded-xl"
           >
             Back
           </button>
           {step < 3 ? (
             <button
               onClick={() => setStep((s) => (s + 1) as 2 | 3)}
-              className="flex items-center gap-1.5 px-4 py-2 bg-[#0E9F8E] hover:bg-[#0c8879] text-white text-xs font-semibold rounded-xl"
+              className="flex items-center gap-1.5 px-4 py-2 bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs font-semibold rounded-xl"
             >
               Continue
               <ArrowRight className="w-4 h-4" />
@@ -179,7 +179,7 @@ export function PortfolioIntakeModal({ onClose }: { onClose: () => void }) {
           ) : (
             <button
               onClick={handleConfirmIntake}
-              className="px-4 py-2 bg-[#0E9F8E] hover:bg-[#0c8879] text-white text-xs font-semibold rounded-xl shadow-lg shadow-[#0E9F8E]/20"
+              className="px-4 py-2 bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs font-semibold rounded-xl shadow-lg shadow-[#2563EB]/20"
             >
               Execute Portfolio Intake
             </button>

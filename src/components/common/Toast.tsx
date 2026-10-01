@@ -39,12 +39,12 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
         {toasts.map((t) => {
           const bg =
             t.type === 'success'
-              ? 'bg-emerald-950 border-emerald-500/50 text-emerald-200'
+              ? 'bg-emerald-50 border-emerald-500/50 text-emerald-200'
               : t.type === 'warning'
-              ? 'bg-amber-950 border-amber-500/50 text-amber-200'
+              ? 'bg-amber-50 border-amber-500/50 text-amber-200'
               : t.type === 'error'
-              ? 'bg-rose-950 border-rose-500/50 text-rose-200'
-              : 'bg-sky-950 border-sky-500/50 text-sky-200';
+              ? 'bg-rose-50 border-rose-500/50 text-rose-200'
+              : 'bg-sky-50 border-sky-500/50 text-sky-200';
 
           const Icon =
             t.type === 'success'
@@ -64,7 +64,7 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
               <div className="flex-1 text-sm font-medium leading-snug">{t.message}</div>
               <button
                 onClick={() => removeToast(t.id)}
-                className="text-slate-400 hover:text-white p-1 rounded-lg transition-colors"
+                className="text-slate-600 hover:text-slate-900 p-1 rounded-lg transition-colors"
               >
                 <X className="w-4 h-4" />
               </button>

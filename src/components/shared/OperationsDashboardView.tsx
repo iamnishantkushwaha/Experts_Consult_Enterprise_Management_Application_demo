@@ -29,44 +29,44 @@ export function OperationsDashboardView({ onNavigate }: { onNavigate?: (view: st
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-xl font-bold text-white flex items-center gap-2">
-          <LayoutDashboard className="w-6 h-6 text-[#0E9F8E]" />
+        <h1 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+          <LayoutDashboard className="w-6 h-6 text-[#2563EB]" />
           Operations Dashboard
         </h1>
-        <p className="text-xs text-slate-400">Portfolio allocation, team productivity, and operational health.</p>
+        <p className="text-xs text-slate-600">Portfolio allocation, team productivity, and operational health.</p>
       </div>
 
       {/* KPI Tiles */}
       <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
         {[
-          { label: 'Active Accounts', value: activeAccounts.toLocaleString(), nav: 'portfolio_allocation', icon: Briefcase, color: 'text-[#0E9F8E]', bg: 'bg-[#0E9F8E]/10' },
-          { label: 'Contact Rate Today', value: '74%', nav: 'teams_productivity', icon: Users, color: 'text-sky-400', bg: 'bg-sky-950/40' },
-          { label: 'Promises Due Today', value: '31', nav: 'team_accounts', icon: AlertTriangle, color: 'text-amber-400', bg: 'bg-amber-950/40' },
-          { label: 'Escalations Open', value: '7', nav: 'escalations', icon: AlertTriangle, color: 'text-rose-400', bg: 'bg-rose-950/40' },
-          { label: 'File Quality Score', value: '91%', nav: 'quality_assurance', icon: ShieldCheck, color: 'text-emerald-400', bg: 'bg-emerald-950/40' },
-          { label: 'Intake Exceptions', value: '53', nav: 'portfolio_allocation', icon: Zap, color: 'text-amber-400', bg: 'bg-amber-950/40' },
+          { label: 'Active Accounts', value: activeAccounts.toLocaleString(), nav: 'portfolio_allocation', icon: Briefcase, color: 'text-[#2563EB]', bg: 'bg-[#2563EB]/10' },
+          { label: 'Contact Rate Today', value: '74%', nav: 'teams_productivity', icon: Users, color: 'text-sky-600', bg: 'bg-sky-50/40' },
+          { label: 'Promises Due Today', value: '31', nav: 'team_accounts', icon: AlertTriangle, color: 'text-amber-600', bg: 'bg-amber-50/40' },
+          { label: 'Escalations Open', value: '7', nav: 'escalations', icon: AlertTriangle, color: 'text-rose-600', bg: 'bg-rose-50/40' },
+          { label: 'File Quality Score', value: '91%', nav: 'quality_assurance', icon: ShieldCheck, color: 'text-emerald-600', bg: 'bg-emerald-50/40' },
+          { label: 'Intake Exceptions', value: '53', nav: 'portfolio_allocation', icon: Zap, color: 'text-amber-600', bg: 'bg-amber-50/40' },
         ].map(tile => (
           <div
             key={tile.label}
             onClick={() => onNavigate?.(tile.nav)}
-            className="bg-slate-900 border border-slate-800 rounded-2xl p-5 hover:border-slate-700 transition-colors cursor-pointer group"
+            className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-slate-300 transition-colors cursor-pointer group"
           >
             <div className="flex items-center gap-3 mb-3">
               <div className={`w-9 h-9 rounded-xl ${tile.bg} flex items-center justify-center`}>
                 <tile.icon className={`w-4 h-4 ${tile.color}`} />
               </div>
-              <span className="text-xs font-semibold text-slate-400 group-hover:text-white transition-colors">{tile.label}</span>
+              <span className="text-xs font-semibold text-slate-600 group-hover:text-slate-900 transition-colors">{tile.label}</span>
             </div>
-            <div className="text-2xl font-extrabold text-white font-mono">{tile.value}</div>
+            <div className="text-2xl font-extrabold text-slate-900 font-mono">{tile.value}</div>
           </div>
         ))}
       </div>
 
       {/* Workload by Team */}
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+      <div className="bg-white border border-slate-200 rounded-2xl p-6">
         <div className="flex justify-between items-center mb-4">
-          <h3 className="text-sm font-bold text-white">Workload by Team</h3>
-          <button onClick={() => onNavigate?.('teams_productivity')} className="text-xs text-[#0E9F8E] hover:underline font-semibold">View Details →</button>
+          <h3 className="text-sm font-bold text-slate-900">Workload by Team</h3>
+          <button onClick={() => onNavigate?.('teams_productivity')} className="text-xs text-[#2563EB] hover:underline font-semibold">View Details →</button>
         </div>
         <div className="space-y-4">
           {teams.map(team => {
@@ -75,12 +75,12 @@ export function OperationsDashboardView({ onNavigate }: { onNavigate?: (view: st
             return (
               <div key={team.name} className="space-y-1.5">
                 <div className="flex justify-between text-xs">
-                  <span className="font-semibold text-slate-200">{team.name} <span className="text-slate-500">({team.officer})</span></span>
-                  <span className={`font-mono font-bold ${over ? 'text-rose-400' : 'text-slate-400'}`}>{team.assigned}/{team.capacity} ({pct}%)</span>
+                  <span className="font-semibold text-slate-800">{team.name} <span className="text-slate-500">({team.officer})</span></span>
+                  <span className={`font-mono font-bold ${over ? 'text-rose-600' : 'text-slate-600'}`}>{team.assigned}/{team.capacity} ({pct}%)</span>
                 </div>
-                <div className="w-full bg-slate-950 rounded-full h-2 overflow-hidden">
+                <div className="w-full bg-slate-50 rounded-full h-2 overflow-hidden">
                   <div
-                    className={`h-2 rounded-full transition-all ${over ? 'bg-rose-500' : 'bg-[#0E9F8E]'}`}
+                    className={`h-2 rounded-full transition-all ${over ? 'bg-rose-500' : 'bg-[#2563EB]'}`}
                     style={{ width: `${Math.min(100, pct)}%` }}
                   />
                 </div>
@@ -91,11 +91,11 @@ export function OperationsDashboardView({ onNavigate }: { onNavigate?: (view: st
       </div>
 
       {/* SLA Tracker */}
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6">
-        <h3 className="text-sm font-bold text-white mb-4">SLA Tracker</h3>
+      <div className="bg-white border border-slate-200 rounded-2xl p-6">
+        <h3 className="text-sm font-bold text-slate-900 mb-4">SLA Tracker</h3>
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs text-slate-300">
-            <thead className="bg-slate-950 text-slate-400 font-semibold border-b border-slate-800">
+          <table className="w-full text-left text-xs text-slate-700">
+            <thead className="bg-slate-50 text-slate-600 font-semibold border-b border-slate-200">
               <tr>
                 <th className="p-3">Client</th>
                 <th className="p-3">SLA Metric</th>
@@ -104,16 +104,16 @@ export function OperationsDashboardView({ onNavigate }: { onNavigate?: (view: st
                 <th className="p-3">Status</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800">
+            <tbody className="divide-y divide-slate-200">
               {slaRows.map(row => (
-                <tr key={row.client} className="hover:bg-slate-800/50">
-                  <td className="p-3 font-semibold text-white">{row.client}</td>
+                <tr key={row.client} className="hover:bg-slate-100/50">
+                  <td className="p-3 font-semibold text-slate-900">{row.client}</td>
                   <td className="p-3">{row.metric}</td>
                   <td className="p-3 font-mono">{row.target}</td>
-                  <td className="p-3 font-mono font-bold text-white">{row.actual}</td>
+                  <td className="p-3 font-mono font-bold text-slate-900">{row.actual}</td>
                   <td className="p-3">
                     <span className={`px-2 py-0.5 rounded text-[10px] font-bold border ${
-                      row.status === 'On track' ? 'bg-emerald-950 text-emerald-300 border-emerald-800' : 'bg-amber-950 text-amber-300 border-amber-800'
+                      row.status === 'On track' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 'bg-amber-50 text-amber-700 border-amber-200'
                     }`}>{row.status}</span>
                   </td>
                 </tr>
@@ -125,10 +125,10 @@ export function OperationsDashboardView({ onNavigate }: { onNavigate?: (view: st
 
       {/* Intake alert */}
       {intakePortfolio && (
-        <div className="bg-amber-950/30 border border-amber-800/50 rounded-2xl p-5 flex items-center justify-between">
+        <div className="bg-amber-50/30 border border-amber-200/50 rounded-2xl p-5 flex items-center justify-between">
           <div className="space-y-0.5">
-            <div className="text-sm font-bold text-amber-300">Portfolio Intake Requires Attention</div>
-            <div className="text-xs text-amber-400">{intakePortfolio.name} — 53 exceptions pending review before accounts can enter recovery.</div>
+            <div className="text-sm font-bold text-amber-700">Portfolio Intake Requires Attention</div>
+            <div className="text-xs text-amber-600">{intakePortfolio.name} — 53 exceptions pending review before accounts can enter recovery.</div>
           </div>
           <button
             onClick={() => onNavigate?.('portfolio_allocation')}

@@ -18,22 +18,22 @@ export function GuidedDemoModal({ onClose }: GuidedDemoModalProps) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md animate-in fade-in">
-      <div className="w-full max-w-2xl bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl overflow-hidden animate-in zoom-in-95">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-50/80 backdrop-blur-md animate-in fade-in">
+      <div className="w-full max-w-2xl bg-white border border-slate-200 rounded-3xl shadow-2xl overflow-hidden animate-in zoom-in-95">
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-5 border-b border-slate-800 bg-slate-950/60">
+        <div className="flex items-center justify-between px-6 py-5 border-b border-slate-200 bg-slate-50/60">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-[#0E9F8E]/20 text-[#0E9F8E] flex items-center justify-center border border-[#0E9F8E]/30">
+            <div className="w-10 h-10 rounded-2xl bg-[#2563EB]/20 text-[#2563EB] flex items-center justify-center border border-[#2563EB]/30">
               <Sparkles className="w-5 h-5" />
             </div>
             <div>
-              <h2 className="text-lg font-bold text-white">Guided Demo Walkthrough</h2>
-              <p className="text-xs text-slate-400">9 structured chapters based on the Appendix Walkthrough Script (~20 mins total)</p>
+              <h2 className="text-lg font-bold text-slate-900">Guided Demo Walkthrough</h2>
+              <p className="text-xs text-slate-600">9 structured chapters based on the Appendix Walkthrough Script (~20 mins total)</p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+            className="p-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -45,27 +45,27 @@ export function GuidedDemoModal({ onClose }: GuidedDemoModalProps) {
             <div
               key={chap.id}
               onClick={() => handleSelectChapter(idx)}
-              className="group flex items-center justify-between p-4 bg-slate-950/60 hover:bg-slate-800/80 border border-slate-800 hover:border-[#0E9F8E]/50 rounded-2xl cursor-pointer transition-all duration-200"
+              className="group flex items-center justify-between p-4 bg-slate-50/60 hover:bg-slate-100/80 border border-slate-200 hover:border-[#2563EB]/50 rounded-2xl cursor-pointer transition-all duration-200"
             >
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-bold text-[#0E9F8E] uppercase tracking-wider">
+                  <span className="text-xs font-bold text-[#2563EB] uppercase tracking-wider">
                     Chapter {chap.id}
                   </span>
                   <span className="text-xs text-slate-500">•</span>
-                  <span className="text-xs text-slate-400 flex items-center gap-1">
+                  <span className="text-xs text-slate-600 flex items-center gap-1">
                     <Clock className="w-3 h-3" /> {chap.duration}
                   </span>
                 </div>
-                <h4 className="text-sm font-semibold text-slate-200 group-hover:text-white">
+                <h4 className="text-sm font-semibold text-slate-800 group-hover:text-slate-900">
                   {chap.title}
                 </h4>
-                <p className="text-xs text-slate-400 italic">
+                <p className="text-xs text-slate-600 italic">
                   {chap.presenterSay}
                 </p>
               </div>
 
-              <div className="w-9 h-9 rounded-xl bg-slate-900 group-hover:bg-[#0E9F8E] text-slate-400 group-hover:text-white flex items-center justify-center transition-colors shrink-0 ml-4">
+              <div className="w-9 h-9 rounded-xl bg-white group-hover:bg-[#2563EB] text-slate-600 group-hover:text-white flex items-center justify-center transition-colors shrink-0 ml-4">
                 <Play className="w-4 h-4 fill-current ml-0.5" />
               </div>
             </div>
@@ -73,13 +73,13 @@ export function GuidedDemoModal({ onClose }: GuidedDemoModalProps) {
         </div>
 
         {/* Footer */}
-        <div className="flex items-center justify-between px-6 py-4 bg-slate-950/60 border-t border-slate-800 text-xs text-slate-400">
-          <span className="flex items-center gap-1.5 text-slate-400">
-            <CheckCircle className="w-4 h-4 text-[#0E9F8E]" /> Click any chapter to jump directly to that persona & guide
+        <div className="flex items-center justify-between px-6 py-4 bg-slate-50/60 border-t border-slate-200 text-xs text-slate-600">
+          <span className="flex items-center gap-1.5 text-slate-600">
+            <CheckCircle className="w-4 h-4 text-[#2563EB]" /> Click any chapter to jump directly to that persona & guide
           </span>
           <button
             onClick={() => handleSelectChapter(0)}
-            className="px-5 py-2.5 bg-[#0E9F8E] hover:bg-[#0c8879] text-white font-semibold rounded-xl transition-all shadow-lg shadow-[#0E9F8E]/20"
+            className="px-5 py-2.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-semibold rounded-xl transition-all shadow-lg shadow-[#2563EB]/20"
           >
             Start Chapter 1 (CEO)
           </button>

@@ -31,7 +31,7 @@ export function MyQueueView({ onNavigate }: { onNavigate?: (view: string) => voi
   return (
     <div className="space-y-6">
       {isOffline && (
-        <div className="bg-amber-950/60 border border-amber-700 rounded-xl px-4 py-2.5 text-xs font-semibold text-amber-200 flex items-center gap-2">
+        <div className="bg-amber-50/60 border border-amber-700 rounded-xl px-4 py-2.5 text-xs font-semibold text-amber-200 flex items-center gap-2">
           <WifiOff className="w-4 h-4" />
           Offline — changes saved on this device (encrypted). Contact logs show Pending sync chip.
         </div>
@@ -39,16 +39,16 @@ export function MyQueueView({ onNavigate }: { onNavigate?: (view: string) => voi
 
       <div className="flex items-center justify-between gap-3">
         <div>
-          <h1 className="text-xl font-bold text-white flex items-center gap-2">
-            <LayoutDashboard className="w-6 h-6 text-[#0E9F8E]" />
-            My Queue · <span className="text-[#0E9F8E]">{filtered.length} accounts</span>
+          <h1 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+            <LayoutDashboard className="w-6 h-6 text-[#2563EB]" />
+            My Queue · <span className="text-[#2563EB]">{filtered.length} accounts</span>
           </h1>
-          <p className="text-xs text-slate-400">Sorted by priority · AI-assisted, you can re-sort</p>
+          <p className="text-xs text-slate-600">Sorted by priority · AI-assisted, you can re-sort</p>
         </div>
         <select
           value={sortBy}
           onChange={e => setSortBy(e.target.value)}
-          className="bg-slate-900 border border-slate-700 text-slate-200 text-xs font-semibold rounded-xl px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-[#0E9F8E]"
+          className="bg-white border border-slate-300 text-slate-800 text-xs font-semibold rounded-xl px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
         >
           <option>Priority</option>
           <option>Balance</option>
@@ -66,63 +66,63 @@ export function MyQueueView({ onNavigate }: { onNavigate?: (view: string) => voi
               placeholder="Search queue…"
               value={searchQ}
               onChange={e => setSearchQ(e.target.value)}
-              className="w-full bg-slate-900 border border-slate-700 rounded-xl pl-4 pr-4 py-2 text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#0E9F8E]"
+              className="w-full bg-white border border-slate-300 rounded-xl pl-4 pr-4 py-2 text-xs text-slate-900 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
             />
           </div>
 
           {filtered.map(acc => (
             <div
               key={acc.id}
-              className="bg-slate-900 border border-slate-800 rounded-2xl p-4 hover:border-[#0E9F8E]/40 transition-all group"
+              className="bg-white border border-slate-200 rounded-2xl p-4 hover:border-[#2563EB]/40 transition-all group"
             >
               <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <span className="font-bold text-white text-sm">{acc.name}</span>
+                    <span className="font-bold text-slate-900 text-sm">{acc.name}</span>
                     <span className="text-[10px] font-mono text-slate-500">{acc.id}</span>
                     <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${
-                      acc.risk === 'High' ? 'bg-rose-950 text-rose-300 border border-rose-800' :
-                      acc.risk === 'Medium' ? 'bg-amber-950 text-amber-300 border border-amber-800' :
-                      'bg-slate-800 text-slate-300 border border-slate-700'
+                      acc.risk === 'High' ? 'bg-rose-50 text-rose-700 border border-rose-200' :
+                      acc.risk === 'Medium' ? 'bg-amber-50 text-amber-700 border border-amber-200' :
+                      'bg-slate-100 text-slate-700 border border-slate-300'
                     }`}>{acc.risk} Risk</span>
-                    {isOffline && <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-950 text-amber-300">Pending sync</span>}
+                    {isOffline && <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-50 text-amber-700">Pending sync</span>}
                   </div>
-                  <div className="flex items-center gap-3 mt-1 text-xs text-slate-400">
-                    <span className="font-mono font-bold text-slate-200">{formatMoney(acc.balance, acc.currency)}</span>
+                  <div className="flex items-center gap-3 mt-1 text-xs text-slate-600">
+                    <span className="font-mono font-bold text-slate-800">{formatMoney(acc.balance, acc.currency)}</span>
                     <span>·</span>
                     <span>{acc.aging} days</span>
                     <span>·</span>
                     <span className={`px-1.5 py-0.5 rounded text-[10px] font-bold ${
-                      acc.reason === 'Broken promise' ? 'bg-rose-950 text-rose-300' :
-                      acc.reason.includes('High risk') ? 'bg-rose-950 text-rose-300' :
-                      'bg-slate-800 text-slate-300'
+                      acc.reason === 'Broken promise' ? 'bg-rose-50 text-rose-700' :
+                      acc.reason.includes('High risk') ? 'bg-rose-50 text-rose-700' :
+                      'bg-slate-100 text-slate-700'
                     }`}>{acc.reason}</span>
                   </div>
                   <div className="flex items-center gap-2 mt-2">
                     <div className="text-[10px] text-slate-500">Probability of payment:</div>
-                    <div className="flex-1 max-w-[80px] bg-slate-950 rounded-full h-1.5 overflow-hidden">
-                      <div className={`h-1.5 rounded-full ${acc.pop >= 65 ? 'bg-[#0E9F8E]' : acc.pop >= 40 ? 'bg-amber-500' : 'bg-rose-500'}`} style={{ width: `${acc.pop}%` }} />
+                    <div className="flex-1 max-w-[80px] bg-slate-50 rounded-full h-1.5 overflow-hidden">
+                      <div className={`h-1.5 rounded-full ${acc.pop >= 65 ? 'bg-[#2563EB]' : acc.pop >= 40 ? 'bg-amber-500' : 'bg-rose-500'}`} style={{ width: `${acc.pop}%` }} />
                     </div>
-                    <span className={`text-[10px] font-bold font-mono ${acc.pop >= 65 ? 'text-[#0E9F8E]' : acc.pop >= 40 ? 'text-amber-400' : 'text-rose-400'}`}>{acc.pop}%</span>
+                    <span className={`text-[10px] font-bold font-mono ${acc.pop >= 65 ? 'text-[#2563EB]' : acc.pop >= 40 ? 'text-amber-600' : 'text-rose-600'}`}>{acc.pop}%</span>
                   </div>
                 </div>
 
                 <div className="flex flex-col gap-1.5 shrink-0">
                   <button
                     onClick={() => onNavigate?.('account_detail')}
-                    className="px-3 py-1.5 bg-[#0E9F8E] hover:bg-[#0c8879] text-white font-bold text-xs rounded-xl transition-colors"
+                    className="px-3 py-1.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold text-xs rounded-xl transition-colors"
                   >Open</button>
                   <div className="flex gap-1">
                     <button
                       onClick={() => onNavigate?.('account_detail')}
                       title="Log contact — Call"
-                      className="p-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white rounded-lg transition-colors"
+                      className="p-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg transition-colors"
                     >
                       <Phone className="w-3.5 h-3.5" />
                     </button>
                     <button
                       title="Send SMS"
-                      className="p-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white rounded-lg transition-colors"
+                      className="p-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg transition-colors"
                     >
                       <MessageSquare className="w-3.5 h-3.5" />
                     </button>
@@ -135,14 +135,14 @@ export function MyQueueView({ onNavigate }: { onNavigate?: (view: string) => voi
 
         {/* Right Rail: Today */}
         <div className="space-y-4">
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4">
-            <h3 className="text-sm font-bold text-white mb-3">Today&apos;s Tasks</h3>
+          <div className="bg-white border border-slate-200 rounded-2xl p-4">
+            <h3 className="text-sm font-bold text-slate-900 mb-3">Today&apos;s Tasks</h3>
             <div className="space-y-2">
               {tasks.map(t => (
                 <label key={t.id} className="flex items-start gap-2.5 text-xs cursor-pointer group">
-                  <input type="checkbox" className="mt-0.5 accent-[#0E9F8E]" />
+                  <input type="checkbox" className="mt-0.5 accent-[#2563EB]" />
                   <div>
-                    <div className="text-slate-200 group-hover:text-white">{t.text}</div>
+                    <div className="text-slate-800 group-hover:text-slate-900">{t.text}</div>
                     <div className="text-slate-500 text-[10px] flex items-center gap-1 mt-0.5">
                       <Clock className="w-3 h-3" /> {t.due}
                     </div>
@@ -152,18 +152,18 @@ export function MyQueueView({ onNavigate }: { onNavigate?: (view: string) => voi
             </div>
           </div>
 
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4">
-            <h3 className="text-sm font-bold text-white mb-3">Promises Due Today</h3>
+          <div className="bg-white border border-slate-200 rounded-2xl p-4">
+            <h3 className="text-sm font-bold text-slate-900 mb-3">Promises Due Today</h3>
             <div className="space-y-2 text-xs">
-              <div className="p-2.5 bg-slate-950 rounded-xl border border-slate-800">
-                <div className="font-semibold text-white">Kofi Mensah</div>
-                <div className="text-slate-400">GHS 5,000.00 · Broken <span className="text-rose-400 font-bold">(past due)</span></div>
-                <button className="mt-1.5 text-[10px] text-[#0E9F8E] font-bold hover:underline">Call now</button>
+              <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-200">
+                <div className="font-semibold text-slate-900">Kofi Mensah</div>
+                <div className="text-slate-600">GHS 5,000.00 · Broken <span className="text-rose-600 font-bold">(past due)</span></div>
+                <button className="mt-1.5 text-[10px] text-[#2563EB] font-bold hover:underline">Call now</button>
               </div>
-              <div className="p-2.5 bg-slate-950 rounded-xl border border-slate-800">
-                <div className="font-semibold text-white">Oliver Hargreaves</div>
-                <div className="text-slate-400">GBP 120.00 · Due today</div>
-                <button className="mt-1.5 text-[10px] text-[#0E9F8E] font-bold hover:underline">Call now</button>
+              <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-200">
+                <div className="font-semibold text-slate-900">Oliver Hargreaves</div>
+                <div className="text-slate-600">GBP 120.00 · Due today</div>
+                <button className="mt-1.5 text-[10px] text-[#2563EB] font-bold hover:underline">Call now</button>
               </div>
             </div>
           </div>

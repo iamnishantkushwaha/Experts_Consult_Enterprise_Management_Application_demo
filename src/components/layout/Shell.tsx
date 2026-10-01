@@ -274,29 +274,29 @@ export function Shell({ children, activeNav = 'dashboard', onNavigate }: ShellPr
   const hideCountrySwitcher = ['client_admin_volta', 'client_admin_savannah', 'legal_partner', 'vendor', 'debtor'].includes(currentRole);
 
   return (
-    <div className="flex h-screen bg-[#070E1A] text-slate-100 overflow-hidden font-sans">
+    <div className="flex h-screen bg-slate-50 text-slate-900 overflow-hidden font-sans">
       {/* Guided Demo floating guide */}
       <GuidedDemoGuide />
 
       {/* LEFT SIDEBAR (#0B1F3A) */}
       <aside
-        className={`bg-[#0B1F3A] border-r border-slate-800/80 flex flex-col justify-between transition-all duration-300 z-20 shrink-0 ${
+        className={`bg-white border-r border-slate-200/80 flex flex-col justify-between transition-all duration-300 z-20 shrink-0 ${
           collapsed ? 'w-20' : 'w-64'
         }`}
       >
         {/* Top logo header */}
         <div>
-          <div className="h-16 flex items-center px-4 border-b border-slate-800/80 justify-between">
+          <div className="h-16 flex items-center px-4 border-b border-slate-200/80 justify-between">
             <div className="flex items-center gap-3 overflow-hidden">
-              <div className="w-10 h-10 rounded-xl bg-[#0E9F8E] flex items-center justify-center font-bold text-white shadow-lg shadow-[#0E9F8E]/30 shrink-0">
+              <div className="w-10 h-10 rounded-xl bg-[#2563EB] flex items-center justify-center font-bold text-white shadow-lg shadow-[#2563EB]/30 shrink-0">
                 EC
               </div>
               {!collapsed && (
                 <div className="truncate">
-                  <div className="text-sm font-bold text-white leading-none tracking-tight">
+                  <div className="text-sm font-bold text-slate-900 leading-none tracking-tight">
                     EXPERTS CONSULT
                   </div>
-                  <div className="text-[10px] text-[#0E9F8E] font-medium tracking-wider uppercase mt-1">
+                  <div className="text-[10px] text-[#2563EB] font-medium tracking-wider uppercase mt-1">
                     Enterprise Operating System
                   </div>
                 </div>
@@ -316,8 +316,8 @@ export function Shell({ children, activeNav = 'dashboard', onNavigate }: ShellPr
                   title={collapsed ? item.label : undefined}
                   className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all ${
                     isActive
-                      ? 'bg-[#0E9F8E] text-white shadow-lg shadow-[#0E9F8E]/25'
-                      : 'text-slate-300 hover:bg-slate-800/60 hover:text-white'
+                      ? 'bg-[#2563EB] text-white shadow-lg shadow-[#2563EB]/25'
+                      : 'text-slate-700 hover:bg-slate-100/60 hover:text-slate-900'
                   }`}
                 >
                   <Icon className="w-4 h-4 shrink-0" />
@@ -329,21 +329,21 @@ export function Shell({ children, activeNav = 'dashboard', onNavigate }: ShellPr
         </div>
 
         {/* Bottom Role Indicator & Collapse Chevron */}
-        <div className="p-3 border-t border-slate-800/80 bg-slate-950/40">
+        <div className="p-3 border-t border-slate-200/80 bg-slate-50/40">
           {!collapsed && (
-            <div className="mb-2 px-2 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-[11px] text-slate-300 flex items-center justify-between">
+            <div className="mb-2 px-2 py-1.5 rounded-lg bg-white border border-slate-200 text-[11px] text-slate-700 flex items-center justify-between">
               <div className="truncate">
                 <span className="text-slate-500 block text-[10px]">Active Persona:</span>
-                <span className="font-semibold text-white">{roleConfig.personName}</span>
+                <span className="font-semibold text-slate-900">{roleConfig.personName}</span>
               </div>
-              <span className="text-[9px] bg-[#0E9F8E]/20 text-[#0E9F8E] px-1.5 py-0.5 rounded font-mono">
+              <span className="text-[9px] bg-[#2563EB]/20 text-[#2563EB] px-1.5 py-0.5 rounded font-mono">
                 {roleConfig.name.split(' ')[0]}
               </span>
             </div>
           )}
           <button
             onClick={() => setCollapsed(!collapsed)}
-            className="w-full flex items-center justify-center p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/80 transition-colors"
+            className="w-full flex items-center justify-center p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100/80 transition-colors"
           >
             {collapsed ? <ChevronRight className="w-5 h-5" /> : <ChevronLeft className="w-5 h-5" />}
           </button>
@@ -353,19 +353,19 @@ export function Shell({ children, activeNav = 'dashboard', onNavigate }: ShellPr
       {/* MAIN CONTENT AREA */}
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
         {/* TOP BAR */}
-        <header className="h-16 bg-[#0B1F3A]/95 backdrop-blur-md border-b border-slate-800/80 px-6 flex items-center justify-between z-10 gap-4">
+        <header className="h-16 bg-white/95 backdrop-blur-md border-b border-slate-200/80 px-6 flex items-center justify-between z-10 gap-4">
           {/* Left: Breadcrumbs & Clock */}
-          <div className="flex items-center gap-4 text-xs text-slate-400 min-w-0">
+          <div className="flex items-center gap-4 text-xs text-slate-600 min-w-0">
             <div className="flex items-center gap-2 truncate">
-              <span className="hover:text-white cursor-pointer" onClick={() => onNavigate?.(navItems[0].id)}>
+              <span className="hover:text-slate-900 cursor-pointer" onClick={() => onNavigate?.(navItems[0].id)}>
                 {roleConfig.name}
               </span>
               <span>/</span>
-              <span className="font-semibold text-slate-100 truncate capitalize">
+              <span className="font-semibold text-slate-900 truncate capitalize">
                 {activeNav.replace(/_/g, ' ')}
               </span>
             </div>
-            <div className="hidden md:flex items-center gap-2 px-2.5 py-1 rounded-full bg-slate-900/80 border border-slate-800 text-[11px] text-slate-300 font-mono">
+            <div className="hidden md:flex items-center gap-2 px-2.5 py-1 rounded-full bg-white/80 border border-slate-200 text-[11px] text-slate-700 font-mono">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
               <span>Thu 1 Oct 2026 · 09:30 Local</span>
             </div>
@@ -374,7 +374,7 @@ export function Shell({ children, activeNav = 'dashboard', onNavigate }: ShellPr
           {/* Center: Global Search (⌘K / Ctrl+K) */}
           <div className="relative flex-1 max-w-md hidden sm:block">
             <div className="relative">
-              <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+              <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-600" />
               <input
                 id="global-search-input"
                 type="text"
@@ -385,26 +385,26 @@ export function Shell({ children, activeNav = 'dashboard', onNavigate }: ShellPr
                   setSearchQuery(e.target.value);
                   setShowSearchDropdown(true);
                 }}
-                className="w-full bg-slate-950/80 border border-slate-700/80 rounded-xl pl-9 pr-14 py-1.5 text-xs text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0E9F8E]"
+                className="w-full bg-slate-50/80 border border-slate-300/80 rounded-xl pl-9 pr-14 py-1.5 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
               />
-              <div className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] font-mono text-slate-400 bg-slate-800 px-1.5 py-0.5 rounded border border-slate-700">
+              <div className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] font-mono text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded border border-slate-300">
                 ⌘K
               </div>
             </div>
 
             {/* Dropdown Results */}
             {showSearchDropdown && searchResults && (
-              <div className="absolute top-full left-0 right-0 mt-2 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl z-50 p-3 max-h-96 overflow-y-auto text-xs space-y-3">
-                <div className="flex justify-between items-center pb-2 border-b border-slate-800">
-                  <span className="font-semibold text-slate-400">Search Results</span>
-                  <button onClick={() => setShowSearchDropdown(false)} className="text-slate-500 hover:text-white">
+              <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-slate-300 rounded-2xl shadow-2xl z-50 p-3 max-h-96 overflow-y-auto text-xs space-y-3">
+                <div className="flex justify-between items-center pb-2 border-b border-slate-200">
+                  <span className="font-semibold text-slate-600">Search Results</span>
+                  <button onClick={() => setShowSearchDropdown(false)} className="text-slate-500 hover:text-slate-900">
                     <X className="w-3.5 h-3.5" />
                   </button>
                 </div>
 
                 {searchResults.accounts.length > 0 && (
                   <div>
-                    <div className="text-[10px] font-bold uppercase text-[#0E9F8E] mb-1">Accounts</div>
+                    <div className="text-[10px] font-bold uppercase text-[#2563EB] mb-1">Accounts</div>
                     {searchResults.accounts.map((acc) => (
                       <div
                         key={acc.id}
@@ -412,10 +412,10 @@ export function Shell({ children, activeNav = 'dashboard', onNavigate }: ShellPr
                           onNavigate?.('account_detail', acc as unknown as Record<string, unknown>);
                           setShowSearchDropdown(false);
                         }}
-                        className="p-2 hover:bg-slate-800 rounded-lg cursor-pointer flex justify-between items-center"
+                        className="p-2 hover:bg-slate-100 rounded-lg cursor-pointer flex justify-between items-center"
                       >
-                        <span className="font-semibold text-white">{acc.id} — {acc.debtorName}</span>
-                        <span className="text-slate-400 font-mono">{acc.currency} {(acc.balanceMinor / 100).toLocaleString()}</span>
+                        <span className="font-semibold text-slate-900">{acc.id} — {acc.debtorName}</span>
+                        <span className="text-slate-600 font-mono">{acc.currency} {(acc.balanceMinor / 100).toLocaleString()}</span>
                       </div>
                     ))}
                   </div>
@@ -423,7 +423,7 @@ export function Shell({ children, activeNav = 'dashboard', onNavigate }: ShellPr
 
                 {searchResults.debtors.length > 0 && (
                   <div>
-                    <div className="text-[10px] font-bold uppercase text-amber-400 mb-1">Debtors</div>
+                    <div className="text-[10px] font-bold uppercase text-amber-600 mb-1">Debtors</div>
                     {searchResults.debtors.map((d) => (
                       <div
                         key={d.id}
@@ -431,7 +431,7 @@ export function Shell({ children, activeNav = 'dashboard', onNavigate }: ShellPr
                           onNavigate?.('account_detail', { debtorId: d.id });
                           setShowSearchDropdown(false);
                         }}
-                        className="p-2 hover:bg-slate-800 rounded-lg cursor-pointer flex justify-between items-center text-slate-200"
+                        className="p-2 hover:bg-slate-100 rounded-lg cursor-pointer flex justify-between items-center text-slate-800"
                       >
                         <span>{d.id} — {d.legalName}</span>
                         <span className="text-slate-500 text-[11px]">{d.type}</span>
@@ -450,10 +450,10 @@ export function Shell({ children, activeNav = 'dashboard', onNavigate }: ShellPr
                           onNavigate?.('portfolio_detail', p as unknown as Record<string, unknown>);
                           setShowSearchDropdown(false);
                         }}
-                        className="p-2 hover:bg-slate-800 rounded-lg cursor-pointer flex justify-between items-center text-slate-200"
+                        className="p-2 hover:bg-slate-100 rounded-lg cursor-pointer flex justify-between items-center text-slate-800"
                       >
                         <span>{p.id} — {p.name}</span>
-                        <span className="text-slate-400">{p.clientName}</span>
+                        <span className="text-slate-600">{p.clientName}</span>
                       </div>
                     ))}
                   </div>
@@ -476,8 +476,8 @@ export function Shell({ children, activeNav = 'dashboard', onNavigate }: ShellPr
                 onClick={() => setIsOffline(!isOffline)}
                 className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold border transition-colors ${
                   isOffline
-                    ? 'bg-amber-950/80 border-amber-600 text-amber-300'
-                    : 'bg-emerald-950/40 border-emerald-800 text-emerald-300'
+                    ? 'bg-amber-50/80 border-amber-600 text-amber-700'
+                    : 'bg-emerald-50/40 border-emerald-200 text-emerald-700'
                 }`}
               >
                 {isOffline ? <WifiOff className="w-3.5 h-3.5" /> : <Wifi className="w-3.5 h-3.5" />}
@@ -496,8 +496,8 @@ export function Shell({ children, activeNav = 'dashboard', onNavigate }: ShellPr
                 onClick={() => setClientViewerMode(!clientViewerMode)}
                 className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold border transition-colors ${
                   clientViewerMode
-                    ? 'bg-sky-950 border-sky-600 text-sky-300'
-                    : 'bg-slate-800 border-slate-700 text-slate-300 hover:text-white'
+                    ? 'bg-sky-50 border-sky-600 text-sky-700'
+                    : 'bg-slate-100 border-slate-300 text-slate-700 hover:text-slate-900'
                 }`}
               >
                 <Eye className="w-3.5 h-3.5" />
@@ -511,7 +511,7 @@ export function Shell({ children, activeNav = 'dashboard', onNavigate }: ShellPr
                 <select
                   value={selectedCountry}
                   onChange={(e) => setSelectedCountry(e.target.value as CountryCode | 'ALL')}
-                  className="bg-slate-900 border border-slate-700 text-slate-200 text-xs font-semibold rounded-xl px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-[#0E9F8E]"
+                  className="bg-white border border-slate-300 text-slate-800 text-xs font-semibold rounded-xl px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
                 >
                   <option value="ALL">🌐 All Countries</option>
                   <option value="GH">🇬🇭 Ghana (GHS)</option>
@@ -531,23 +531,23 @@ export function Shell({ children, activeNav = 'dashboard', onNavigate }: ShellPr
             <div className="relative">
               <button
                 onClick={() => setShowNotificationPopover(!showNotificationPopover)}
-                className="relative p-2 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 text-slate-300 hover:text-white transition-colors"
+                className="relative p-2 rounded-xl bg-white border border-slate-200 hover:border-slate-300 text-slate-700 hover:text-slate-900 transition-colors"
               >
                 <Bell className="w-4 h-4" />
                 {unreadNotifs.length > 0 && (
-                  <span className="absolute -top-1 -right-1 w-4 h-4 bg-rose-500 text-white rounded-full font-mono text-[9px] font-bold flex items-center justify-center shadow-lg">
+                  <span className="absolute -top-1 -right-1 w-4 h-4 bg-rose-500 text-slate-900 rounded-full font-mono text-[9px] font-bold flex items-center justify-center shadow-lg">
                     {unreadNotifs.length}
                   </span>
                 )}
               </button>
 
               {showNotificationPopover && (
-                <div className="absolute top-full right-0 mt-2 w-80 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl z-50 p-4 space-y-3 animate-in zoom-in-95">
-                  <div className="flex items-center justify-between pb-2 border-b border-slate-800">
-                    <span className="font-bold text-xs text-white">Notifications</span>
+                <div className="absolute top-full right-0 mt-2 w-80 bg-white border border-slate-300 rounded-2xl shadow-2xl z-50 p-4 space-y-3 animate-in zoom-in-95">
+                  <div className="flex items-center justify-between pb-2 border-b border-slate-200">
+                    <span className="font-bold text-xs text-slate-900">Notifications</span>
                     <button
                       onClick={markAllNotificationsRead}
-                      className="text-[11px] text-[#0E9F8E] hover:underline"
+                      className="text-[11px] text-[#2563EB] hover:underline"
                     >
                       Mark all read
                     </button>
@@ -564,26 +564,26 @@ export function Shell({ children, activeNav = 'dashboard', onNavigate }: ShellPr
                         }}
                         className={`p-2.5 rounded-xl border text-xs cursor-pointer transition-colors ${
                           n.read
-                            ? 'bg-slate-950/40 border-slate-800 text-slate-400'
-                            : 'bg-slate-800/80 border-slate-700 text-slate-200'
+                            ? 'bg-slate-50/40 border-slate-200 text-slate-600'
+                            : 'bg-slate-100/80 border-slate-300 text-slate-800'
                         }`}
                       >
                         <div className="flex items-center justify-between font-semibold">
                           <span>{n.title}</span>
                           <span className="text-[10px] text-slate-500 font-normal">{n.relativeTime}</span>
                         </div>
-                        <p className="text-[11px] text-slate-400 mt-1 italic">{n.preview}</p>
+                        <p className="text-[11px] text-slate-600 mt-1 italic">{n.preview}</p>
                       </div>
                     ))}
                   </div>
 
-                  <div className="pt-2 border-t border-slate-800 text-center">
+                  <div className="pt-2 border-t border-slate-200 text-center">
                     <button
                       onClick={() => {
                         setShowNotificationPopover(false);
                         onNavigate?.('notifications');
                       }}
-                      className="text-xs font-semibold text-[#0E9F8E] hover:underline"
+                      className="text-xs font-semibold text-[#2563EB] hover:underline"
                     >
                       View all notifications →
                     </button>
@@ -596,22 +596,22 @@ export function Shell({ children, activeNav = 'dashboard', onNavigate }: ShellPr
             <div className="relative">
               <button
                 onClick={() => setShowUserMenuPopover(!showUserMenuPopover)}
-                className="flex items-center gap-2 p-1.5 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition-colors"
+                className="flex items-center gap-2 p-1.5 rounded-xl bg-white border border-slate-200 hover:border-slate-300 transition-colors"
               >
-                <div className="w-7 h-7 rounded-lg bg-[#0E9F8E] text-white font-bold text-xs flex items-center justify-center">
+                <div className="w-7 h-7 rounded-lg bg-[#2563EB] text-white font-bold text-xs flex items-center justify-center">
                   {roleConfig.avatarInitials}
                 </div>
-                <span className="text-xs font-semibold text-white hidden md:inline truncate max-w-[120px]">
+                <span className="text-xs font-semibold text-slate-900 hidden md:inline truncate max-w-[120px]">
                   {roleConfig.personName}
                 </span>
-                <ChevronDown className="w-3.5 h-3.5 text-slate-400" />
+                <ChevronDown className="w-3.5 h-3.5 text-slate-600" />
               </button>
 
               {showUserMenuPopover && (
-                <div className="absolute top-full right-0 mt-2 w-56 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl z-50 p-2 space-y-1 animate-in zoom-in-95">
-                  <div className="px-3 py-2 border-b border-slate-800">
-                    <div className="font-bold text-xs text-white">{roleConfig.personName}</div>
-                    <div className="text-[10px] text-[#0E9F8E]">{roleConfig.name}</div>
+                <div className="absolute top-full right-0 mt-2 w-56 bg-white border border-slate-300 rounded-2xl shadow-2xl z-50 p-2 space-y-1 animate-in zoom-in-95">
+                  <div className="px-3 py-2 border-b border-slate-200">
+                    <div className="font-bold text-xs text-slate-900">{roleConfig.personName}</div>
+                    <div className="text-[10px] text-[#2563EB]">{roleConfig.name}</div>
                   </div>
 
                   <button
@@ -620,9 +620,9 @@ export function Shell({ children, activeNav = 'dashboard', onNavigate }: ShellPr
                       switchRole('executive');
                       onNavigate?.('role_picker');
                     }}
-                    className="w-full flex items-center gap-2 px-3 py-2 text-xs text-slate-300 hover:bg-slate-800 hover:text-white rounded-xl text-left"
+                    className="w-full flex items-center gap-2 px-3 py-2 text-xs text-slate-700 hover:bg-slate-100 hover:text-slate-900 rounded-xl text-left"
                   >
-                    <UserIcon className="w-3.5 h-3.5 text-slate-400" />
+                    <UserIcon className="w-3.5 h-3.5 text-slate-600" />
                     <span>Switch Role</span>
                   </button>
 
@@ -631,7 +631,7 @@ export function Shell({ children, activeNav = 'dashboard', onNavigate }: ShellPr
                       setShowUserMenuPopover(false);
                       setShowResetConfirmModal(true);
                     }}
-                    className="w-full flex items-center gap-2 px-3 py-2 text-xs text-amber-400 hover:bg-amber-950/40 rounded-xl text-left"
+                    className="w-full flex items-center gap-2 px-3 py-2 text-xs text-amber-600 hover:bg-amber-50/40 rounded-xl text-left"
                   >
                     <RotateCcw className="w-3.5 h-3.5" />
                     <span>Reset Demo Data</span>
@@ -643,7 +643,7 @@ export function Shell({ children, activeNav = 'dashboard', onNavigate }: ShellPr
                       toast('Signed out of demo', 'info');
                       onNavigate?.('role_picker');
                     }}
-                    className="w-full flex items-center gap-2 px-3 py-2 text-xs text-rose-400 hover:bg-rose-950/40 rounded-xl text-left border-t border-slate-800 mt-1"
+                    className="w-full flex items-center gap-2 px-3 py-2 text-xs text-rose-600 hover:bg-rose-50/40 rounded-xl text-left border-t border-slate-200 mt-1"
                   >
                     <LogOut className="w-3.5 h-3.5" />
                     <span>Sign Out</span>
@@ -657,13 +657,13 @@ export function Shell({ children, activeNav = 'dashboard', onNavigate }: ShellPr
         {/* MAIN BODY VIEW */}
         <main className="flex-1 overflow-y-auto p-6 relative">
           {clientViewerMode && (
-            <div className="mb-4 bg-sky-950 border border-sky-600 text-sky-200 px-4 py-2.5 rounded-xl text-xs flex items-center justify-between">
+            <div className="mb-4 bg-sky-50 border border-sky-600 text-sky-200 px-4 py-2.5 rounded-xl text-xs flex items-center justify-between">
               <span className="flex items-center gap-2 font-semibold">
                 <Eye className="w-4 h-4" /> Client Read-Only Viewer Mode — Approval, upload, and credential modifications are disabled.
               </span>
               <button
                 onClick={() => setClientViewerMode(false)}
-                className="underline hover:text-white"
+                className="underline hover:text-slate-900"
               >
                 Exit Viewer Mode
               </button>
@@ -675,16 +675,16 @@ export function Shell({ children, activeNav = 'dashboard', onNavigate }: ShellPr
 
       {/* Reset Demo Data Modal */}
       {showResetConfirmModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-in fade-in">
-          <div className="w-full max-w-md bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl p-6 space-y-4">
-            <h3 className="text-base font-bold text-white">Reset Demo Data?</h3>
-            <p className="text-xs text-slate-300 leading-relaxed">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-50/80 backdrop-blur-sm animate-in fade-in">
+          <div className="w-full max-w-md bg-white border border-slate-200 rounded-2xl shadow-2xl p-6 space-y-4">
+            <h3 className="text-base font-bold text-slate-900">Reset Demo Data?</h3>
+            <p className="text-xs text-slate-700 leading-relaxed">
               Reset all accounts, payments, approvals, and audit logs to their starting seed state? Any modifications made during this browser session will be restored.
             </p>
             <div className="flex justify-end gap-3 pt-2">
               <button
                 onClick={() => setShowResetConfirmModal(false)}
-                className="px-4 py-2 text-xs font-semibold text-slate-400 hover:text-white"
+                className="px-4 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900"
               >
                 Cancel
               </button>

@@ -30,25 +30,25 @@ export function TeamDashboardView({ onNavigate }: { onNavigate?: (view: string) 
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-xl font-bold text-white flex items-center gap-2">
-          <LayoutDashboard className="w-6 h-6 text-[#0E9F8E]" />
+        <h1 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+          <LayoutDashboard className="w-6 h-6 text-[#2563EB]" />
           Team Dashboard
         </h1>
-        <p className="text-xs text-slate-400">Recovery Manager — Ghana. Team performance, escalations, and approvals.</p>
+        <p className="text-xs text-slate-600">Recovery Manager — Ghana. Team performance, escalations, and approvals.</p>
       </div>
 
       {/* KPI Tiles */}
       <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
         {[
-          { label: 'Team Accounts', value: accounts.length.toString(), color: 'text-[#0E9F8E]' },
-          { label: 'Promises Due Today', value: '14', color: 'text-amber-400' },
-          { label: 'Broken Promises', value: '9', color: 'text-rose-400' },
-          { label: 'Settlements Awaiting Me', value: pendingApprovals.toString(), color: 'text-sky-400' },
-          { label: 'Cash Recovered (MTD)', value: 'GHS 1.42M', color: 'text-[#0E9F8E]' },
-          { label: 'QA Score (Team)', value: '90%', color: 'text-emerald-400' },
+          { label: 'Team Accounts', value: accounts.length.toString(), color: 'text-[#2563EB]' },
+          { label: 'Promises Due Today', value: '14', color: 'text-amber-600' },
+          { label: 'Broken Promises', value: '9', color: 'text-rose-600' },
+          { label: 'Settlements Awaiting Me', value: pendingApprovals.toString(), color: 'text-sky-600' },
+          { label: 'Cash Recovered (MTD)', value: 'GHS 1.42M', color: 'text-[#2563EB]' },
+          { label: 'QA Score (Team)', value: '90%', color: 'text-emerald-600' },
         ].map(tile => (
-          <div key={tile.label} className="bg-slate-900 border border-slate-800 rounded-2xl p-5 hover:border-slate-700 transition-colors cursor-pointer group">
-            <div className="text-xs font-semibold text-slate-400 group-hover:text-white mb-2 transition-colors">{tile.label}</div>
+          <div key={tile.label} className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-slate-300 transition-colors cursor-pointer group">
+            <div className="text-xs font-semibold text-slate-600 group-hover:text-slate-900 mb-2 transition-colors">{tile.label}</div>
             <div className={`text-2xl font-extrabold font-mono ${tile.color}`}>{tile.value}</div>
           </div>
         ))}
@@ -56,14 +56,14 @@ export function TeamDashboardView({ onNavigate }: { onNavigate?: (view: string) 
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Officer Leaderboard */}
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+        <div className="bg-white border border-slate-200 rounded-2xl p-6">
           <div className="flex justify-between items-center mb-4">
-            <h3 className="text-sm font-bold text-white">Officer Leaderboard</h3>
-            <button onClick={() => onNavigate?.('team_performance')} className="text-xs text-[#0E9F8E] hover:underline">Performance →</button>
+            <h3 className="text-sm font-bold text-slate-900">Officer Leaderboard</h3>
+            <button onClick={() => onNavigate?.('team_performance')} className="text-xs text-[#2563EB] hover:underline">Performance →</button>
           </div>
           <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs text-slate-300">
-              <thead className="text-slate-500 font-semibold border-b border-slate-800">
+            <table className="w-full text-left text-xs text-slate-700">
+              <thead className="text-slate-500 font-semibold border-b border-slate-200">
                 <tr>
                   <th className="pb-2">Officer</th>
                   <th className="pb-2 text-right">Contacted</th>
@@ -72,15 +72,15 @@ export function TeamDashboardView({ onNavigate }: { onNavigate?: (view: string) 
                   <th className="pb-2 text-right">QA</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800">
+              <tbody className="divide-y divide-slate-200">
                 {officers.map(o => (
-                  <tr key={o.name} className="hover:bg-slate-800/50">
-                    <td className="py-2.5 font-semibold text-white">{o.name}</td>
+                  <tr key={o.name} className="hover:bg-slate-100/50">
+                    <td className="py-2.5 font-semibold text-slate-900">{o.name}</td>
                     <td className="py-2.5 text-right font-mono">{o.contacted}/{o.assigned}</td>
                     <td className="py-2.5 text-right font-mono">{o.keptPct}%</td>
-                    <td className="py-2.5 text-right font-mono text-[#0E9F8E]">{formatMoney(o.cash, 'GHS')}</td>
+                    <td className="py-2.5 text-right font-mono text-[#2563EB]">{formatMoney(o.cash, 'GHS')}</td>
                     <td className="py-2.5 text-right">
-                      <span className={`font-bold ${o.qaScore >= 90 ? 'text-emerald-400' : 'text-amber-400'}`}>{o.qaScore}%</span>
+                      <span className={`font-bold ${o.qaScore >= 90 ? 'text-emerald-600' : 'text-amber-600'}`}>{o.qaScore}%</span>
                     </td>
                   </tr>
                 ))}
@@ -90,22 +90,22 @@ export function TeamDashboardView({ onNavigate }: { onNavigate?: (view: string) 
         </div>
 
         {/* Escalation Inbox */}
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+        <div className="bg-white border border-slate-200 rounded-2xl p-6">
           <div className="flex justify-between items-center mb-4">
-            <h3 className="text-sm font-bold text-white">Escalation Inbox</h3>
-            <span className="px-2 py-0.5 bg-rose-950 text-rose-400 rounded text-[10px] font-bold">{escalations.length} Open</span>
+            <h3 className="text-sm font-bold text-slate-900">Escalation Inbox</h3>
+            <span className="px-2 py-0.5 bg-rose-50 text-rose-600 rounded text-[10px] font-bold">{escalations.length} Open</span>
           </div>
           <div className="space-y-2">
             {escalations.map(esc => (
-              <div key={esc.id} className="p-3 bg-slate-950 border border-slate-800 rounded-xl flex items-center justify-between gap-3 hover:border-slate-700 transition-colors">
+              <div key={esc.id} className="p-3 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between gap-3 hover:border-slate-300 transition-colors">
                 <div>
-                  <div className="text-xs font-semibold text-white">{esc.debtor}</div>
-                  <div className="text-[11px] text-slate-400">{esc.type} · {esc.age} old</div>
+                  <div className="text-xs font-semibold text-slate-900">{esc.debtor}</div>
+                  <div className="text-[11px] text-slate-600">{esc.type} · {esc.age} old</div>
                 </div>
                 <div className="flex gap-2 shrink-0">
                   <button
                     onClick={() => onNavigate?.('account_detail')}
-                    className="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-white text-[10px] font-bold rounded-lg"
+                    className="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 text-slate-900 text-[10px] font-bold rounded-lg"
                   >Open</button>
                 </div>
               </div>
@@ -115,24 +115,24 @@ export function TeamDashboardView({ onNavigate }: { onNavigate?: (view: string) 
       </div>
 
       {/* Today's Priorities */}
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6">
-        <h3 className="text-sm font-bold text-white mb-4">Today&apos;s Priorities (AI-Ranked)</h3>
-        <div className="divide-y divide-slate-800">
+      <div className="bg-white border border-slate-200 rounded-2xl p-6">
+        <h3 className="text-sm font-bold text-slate-900 mb-4">Today&apos;s Priorities (AI-Ranked)</h3>
+        <div className="divide-y divide-slate-200">
           {priorities.map(acc => (
             <div key={acc.id} className="py-3 flex items-center justify-between gap-4">
               <div className="min-w-0">
-                <div className="text-xs font-bold text-white truncate">{acc.debtorName}</div>
-                <div className="text-[11px] text-slate-400 font-mono">{acc.id} · {formatMoney(acc.balanceMinor, acc.currency)}</div>
+                <div className="text-xs font-bold text-slate-900 truncate">{acc.debtorName}</div>
+                <div className="text-[11px] text-slate-600 font-mono">{acc.id} · {formatMoney(acc.balanceMinor, acc.currency)}</div>
               </div>
               <div className="flex items-center gap-3 shrink-0">
                 <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${
-                  acc.reason === 'High risk' ? 'bg-rose-950 text-rose-300' :
-                  acc.reason === 'Promise due' ? 'bg-amber-950 text-amber-300' :
-                  'bg-slate-800 text-slate-300'
+                  acc.reason === 'High risk' ? 'bg-rose-50 text-rose-700' :
+                  acc.reason === 'Promise due' ? 'bg-amber-50 text-amber-700' :
+                  'bg-slate-100 text-slate-700'
                 }`}>{acc.reason}</span>
                 <button
                   onClick={() => onNavigate?.('account_detail')}
-                  className="text-[#0E9F8E] font-bold text-xs hover:underline"
+                  className="text-[#2563EB] font-bold text-xs hover:underline"
                 >Open</button>
               </div>
             </div>

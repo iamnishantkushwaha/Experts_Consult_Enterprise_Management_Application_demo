@@ -11,25 +11,25 @@ export function ClientLegalCasesView({ onNavigate }: { onNavigate?: (view: strin
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-xl font-bold text-white flex items-center gap-2">
-          <Scale className="w-6 h-6 text-[#0E9F8E]" />
+        <h1 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+          <Scale className="w-6 h-6 text-[#2563EB]" />
           Client Legal Litigation Cases
         </h1>
-        <p className="text-xs text-slate-400">Court proceedings, law firm filings, and lawsuit progress reports for your portfolio.</p>
+        <p className="text-xs text-slate-600">Court proceedings, law firm filings, and lawsuit progress reports for your portfolio.</p>
       </div>
 
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl p-6">
+      <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-xl p-6">
         <div className="space-y-3">
           {legalMatters.map(m => (
-            <div key={m.id} className="p-4 bg-slate-950 border border-slate-800 rounded-xl flex items-center justify-between">
+            <div key={m.id} className="p-4 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between">
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="font-mono font-bold text-[#0E9F8E] text-xs">{m.id}</span>
-                  <span className="font-semibold text-white text-xs">— {m.debtorName}</span>
+                  <span className="font-mono font-bold text-[#2563EB] text-xs">{m.id}</span>
+                  <span className="font-semibold text-slate-900 text-xs">— {m.debtorName}</span>
                 </div>
-                <div className="text-xs text-slate-400 mt-1">Claim: <strong className="text-white font-mono">{formatMoney(m.claimMinor, m.currency)}</strong> · Counsel: <span className="text-slate-300">{m.counselName}</span> · Stage: <span className="text-amber-400 font-semibold">{m.stage}</span></div>
+                <div className="text-xs text-slate-600 mt-1">Claim: <strong className="text-slate-900 font-mono">{formatMoney(m.claimMinor, m.currency)}</strong> · Counsel: <span className="text-slate-700">{m.counselName}</span> · Stage: <span className="text-amber-600 font-semibold">{m.stage}</span></div>
               </div>
-              <button onClick={() => onNavigate?.('account_detail')} className="text-[#0E9F8E] hover:underline text-xs font-semibold">
+              <button onClick={() => onNavigate?.('account_detail')} className="text-[#2563EB] hover:underline text-xs font-semibold">
                 Inspect Case →
               </button>
             </div>

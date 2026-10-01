@@ -22,13 +22,13 @@ export function FinanceDashboardView({ onNavigate }: { onNavigate?: (view: strin
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-xl font-bold text-white flex items-center gap-2">
-            <LayoutDashboard className="w-6 h-6 text-[#0E9F8E]" />
+          <h1 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+            <LayoutDashboard className="w-6 h-6 text-[#2563EB]" />
             Finance Dashboard
           </h1>
-          <p className="text-xs text-slate-400">Reconciliation, payments, remittances, and fee revenue.</p>
+          <p className="text-xs text-slate-600">Reconciliation, payments, remittances, and fee revenue.</p>
         </div>
-        <select className="bg-slate-900 border border-slate-700 text-slate-200 text-xs font-semibold rounded-xl px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-[#0E9F8E]">
+        <select className="bg-white border border-slate-300 text-slate-800 text-xs font-semibold rounded-xl px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-[#2563EB]">
           <option>Today</option>
           <option>Month to Date</option>
           <option>Quarter to Date</option>
@@ -37,74 +37,74 @@ export function FinanceDashboardView({ onNavigate }: { onNavigate?: (view: strin
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {/* Cash Received */}
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 hover:border-slate-700 transition-colors cursor-pointer group">
+        <div className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-slate-300 transition-colors cursor-pointer group">
           <div className="flex items-center gap-3 mb-3">
-            <div className="w-10 h-10 rounded-xl bg-[#0E9F8E]/20 flex items-center justify-center text-[#0E9F8E]">
+            <div className="w-10 h-10 rounded-xl bg-[#2563EB]/20 flex items-center justify-center text-[#2563EB]">
               <DollarSign className="w-5 h-5" />
             </div>
-            <span className="text-sm font-bold text-slate-300 group-hover:text-white transition-colors">Cash Received (Period)</span>
+            <span className="text-sm font-bold text-slate-700 group-hover:text-slate-900 transition-colors">Cash Received (Period)</span>
           </div>
-          <div className="text-3xl font-extrabold text-white font-mono">USD 214.6K</div>
+          <div className="text-3xl font-extrabold text-slate-900 font-mono">USD 214.6K</div>
         </div>
 
         {/* Allocated */}
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 hover:border-slate-700 transition-colors cursor-pointer group">
+        <div className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-slate-300 transition-colors cursor-pointer group">
           <div className="flex items-center gap-3 mb-3">
-            <div className="w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center text-slate-400">
+            <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-slate-600">
               <TrendingUp className="w-5 h-5" />
             </div>
-            <span className="text-sm font-bold text-slate-300 group-hover:text-white transition-colors">Allocated</span>
+            <span className="text-sm font-bold text-slate-700 group-hover:text-slate-900 transition-colors">Allocated</span>
           </div>
-          <div className="text-3xl font-extrabold text-white font-mono">{allocatedPct}%</div>
+          <div className="text-3xl font-extrabold text-slate-900 font-mono">{allocatedPct}%</div>
         </div>
 
         {/* Unreconciled */}
-        <div className="bg-slate-900 border border-rose-900/50 rounded-2xl p-5 hover:border-rose-700 transition-colors cursor-pointer group">
+        <div className="bg-white border border-rose-900/50 rounded-2xl p-5 hover:border-rose-700 transition-colors cursor-pointer group">
           <div className="flex items-center gap-3 mb-3">
-            <div className="w-10 h-10 rounded-xl bg-rose-950/50 flex items-center justify-center text-rose-500">
+            <div className="w-10 h-10 rounded-xl bg-rose-50/50 flex items-center justify-center text-rose-500">
               <Wallet className="w-5 h-5" />
             </div>
-            <span className="text-sm font-bold text-slate-300 group-hover:text-white transition-colors">Unreconciled Funds</span>
+            <span className="text-sm font-bold text-slate-700 group-hover:text-slate-900 transition-colors">Unreconciled Funds</span>
           </div>
           <div className="text-3xl font-extrabold text-rose-500 font-mono">USD 9.0K</div>
         </div>
 
         {/* Remittances */}
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 hover:border-slate-700 transition-colors cursor-pointer group">
+        <div className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-slate-300 transition-colors cursor-pointer group">
           <div className="flex items-center justify-between mb-3">
-            <span className="text-sm font-bold text-slate-300 group-hover:text-white transition-colors">Remittances Awaiting</span>
+            <span className="text-sm font-bold text-slate-700 group-hover:text-slate-900 transition-colors">Remittances Awaiting</span>
             <ArrowUpRight className="w-4 h-4 text-slate-500 opacity-0 group-hover:opacity-100 transition-opacity" />
           </div>
-          <div className="text-3xl font-extrabold text-white font-mono">{awaitingRemittances}</div>
+          <div className="text-3xl font-extrabold text-slate-900 font-mono">{awaitingRemittances}</div>
         </div>
 
         {/* Fees Earned */}
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 hover:border-slate-700 transition-colors cursor-pointer group">
+        <div className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-slate-300 transition-colors cursor-pointer group">
           <div className="flex items-center justify-between mb-3">
-            <span className="text-sm font-bold text-slate-300 group-hover:text-white transition-colors">Fees Earned (MTD)</span>
+            <span className="text-sm font-bold text-slate-700 group-hover:text-slate-900 transition-colors">Fees Earned (MTD)</span>
             <ArrowUpRight className="w-4 h-4 text-slate-500 opacity-0 group-hover:opacity-100 transition-opacity" />
           </div>
-          <div className="text-3xl font-extrabold text-white font-mono">USD 41.8K</div>
+          <div className="text-3xl font-extrabold text-slate-900 font-mono">USD 41.8K</div>
         </div>
 
         {/* Approvals pending */}
         <div 
           onClick={() => onNavigate?.('approvals')}
-          className="bg-slate-900 border border-slate-800 rounded-2xl p-5 hover:border-slate-700 transition-colors cursor-pointer group"
+          className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-slate-300 transition-colors cursor-pointer group"
         >
           <div className="flex items-center justify-between mb-3">
-            <span className="text-sm font-bold text-slate-300 group-hover:text-white transition-colors">Pending Approvals</span>
+            <span className="text-sm font-bold text-slate-700 group-hover:text-slate-900 transition-colors">Pending Approvals</span>
             <ArrowUpRight className="w-4 h-4 text-slate-500 opacity-0 group-hover:opacity-100 transition-opacity" />
           </div>
-          <div className="text-3xl font-extrabold text-white font-mono">{pendingApprovals}</div>
+          <div className="text-3xl font-extrabold text-slate-900 font-mono">{pendingApprovals}</div>
         </div>
       </div>
 
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6">
-        <h3 className="text-sm font-bold text-white mb-4">Exceptions Mini-list</h3>
+      <div className="bg-white border border-slate-200 rounded-2xl p-6">
+        <h3 className="text-sm font-bold text-slate-900 mb-4">Exceptions Mini-list</h3>
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs text-slate-300">
-             <thead className="bg-slate-950 text-slate-400 font-semibold border-b border-slate-800">
+          <table className="w-full text-left text-xs text-slate-700">
+             <thead className="bg-slate-50 text-slate-600 font-semibold border-b border-slate-200">
                <tr>
                  <th className="p-3">Payment Ref</th>
                  <th className="p-3">Received Date</th>
@@ -114,20 +114,20 @@ export function FinanceDashboardView({ onNavigate }: { onNavigate?: (view: strin
                  <th className="p-3 text-right">Action</th>
                </tr>
              </thead>
-             <tbody className="divide-y divide-slate-800">
+             <tbody className="divide-y divide-slate-200">
                {payments.filter(p => p.status === 'Unmatched' || p.status === 'Exception').slice(0, 5).map(p => (
-                 <tr key={p.id} className="hover:bg-slate-800/50">
-                    <td className="p-3 font-mono font-bold text-white">{p.reference}</td>
+                 <tr key={p.id} className="hover:bg-slate-100/50">
+                    <td className="p-3 font-mono font-bold text-slate-900">{p.reference}</td>
                     <td className="p-3 font-mono">{p.receivedDate}</td>
-                    <td className="p-3 font-mono font-bold text-white">{formatMoney(p.amountMinor, p.currency)}</td>
+                    <td className="p-3 font-mono font-bold text-slate-900">{formatMoney(p.amountMinor, p.currency)}</td>
                     <td className="p-3">
-                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-rose-950 text-rose-300 border border-rose-800">
+                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-rose-50 text-rose-700 border border-rose-200">
                         {p.status}
                       </span>
                     </td>
-                    <td className="p-3 text-rose-300">{p.exceptionReason}</td>
+                    <td className="p-3 text-rose-700">{p.exceptionReason}</td>
                     <td className="p-3 text-right">
-                       <button className="text-[#0E9F8E] hover:underline font-semibold text-xs">Resolve</button>
+                       <button className="text-[#2563EB] hover:underline font-semibold text-xs">Resolve</button>
                     </td>
                  </tr>
                ))}

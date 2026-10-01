@@ -262,26 +262,26 @@ export default function DemoApp() {
     case 'my_investigations':
       content = (
         <div className="space-y-6">
-          <h1 className="text-xl font-bold text-white">My Investigations</h1>
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+          <h1 className="text-xl font-bold text-slate-900">My Investigations</h1>
+          <div className="bg-white border border-slate-200 rounded-2xl p-6">
             {useAppStore.getState().investigations.map(inv => (
-              <div key={inv.id} className="py-4 border-b border-slate-800 last:border-0">
+              <div key={inv.id} className="py-4 border-b border-slate-200 last:border-0">
                 <div className="flex justify-between items-start">
                   <div>
-                    <div className="font-bold text-white text-sm">{inv.debtorName}</div>
-                    <div className="text-xs text-slate-400 mt-0.5">{inv.type} · {inv.objective}</div>
+                    <div className="font-bold text-slate-900 text-sm">{inv.debtorName}</div>
+                    <div className="text-xs text-slate-600 mt-0.5">{inv.type} · {inv.objective}</div>
                     <div className="text-[11px] text-slate-500 mt-1">Lawful basis: {inv.lawfulBasis}</div>
                   </div>
                   <span className={`px-2 py-0.5 rounded text-[10px] font-bold border ${
-                    inv.status === 'In progress' ? 'bg-sky-950 text-sky-300 border-sky-800' :
-                    inv.status === 'Submitted' ? 'bg-emerald-950 text-emerald-300 border-emerald-800' :
-                    'bg-amber-950 text-amber-300 border-amber-800'
+                    inv.status === 'In progress' ? 'bg-sky-50 text-sky-700 border-sky-200' :
+                    inv.status === 'Submitted' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' :
+                    'bg-amber-50 text-amber-700 border-amber-200'
                   }`}>{inv.status}</span>
                 </div>
                 {inv.findings.length > 0 && (
                   <div className="mt-2 space-y-1">
                     {inv.findings.map((f, i) => (
-                      <div key={i} className="text-xs text-[#0E9F8E] flex items-start gap-1.5">
+                      <div key={i} className="text-xs text-[#2563EB] flex items-start gap-1.5">
                         <span className="mt-0.5 shrink-0">✓</span>{f}
                       </div>
                     ))}
@@ -353,23 +353,23 @@ export default function DemoApp() {
       // These pages display live data with a "data preview" structure
       content = (
         <div className="space-y-6">
-          <h1 className="text-xl font-bold text-white capitalize">{resolvedNav.replace(/_/g, ' ')}</h1>
+          <h1 className="text-xl font-bold text-slate-900 capitalize">{resolvedNav.replace(/_/g, ' ')}</h1>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {[1,2,3].map(i => (
-              <div key={i} className="bg-slate-900 border border-slate-800 rounded-2xl p-5 animate-pulse">
-                <div className="h-3 bg-slate-800 rounded w-2/3 mb-3"/>
-                <div className="h-7 bg-slate-800 rounded w-1/3 mb-2"/>
-                <div className="h-2 bg-slate-800 rounded w-full"/>
+              <div key={i} className="bg-white border border-slate-200 rounded-2xl p-5 animate-pulse">
+                <div className="h-3 bg-slate-100 rounded w-2/3 mb-3"/>
+                <div className="h-7 bg-slate-100 rounded w-1/3 mb-2"/>
+                <div className="h-2 bg-slate-100 rounded w-full"/>
               </div>
             ))}
           </div>
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6">
-            <div className="h-3 bg-slate-800 rounded w-1/4 mb-4"/>
+          <div className="bg-white border border-slate-200 rounded-2xl p-6">
+            <div className="h-3 bg-slate-100 rounded w-1/4 mb-4"/>
             {[1,2,3,4,5].map(i => (
-              <div key={i} className="flex gap-4 py-3 border-b border-slate-800 last:border-0">
-                <div className="h-3 bg-slate-800 rounded flex-1 animate-pulse"/>
-                <div className="h-3 bg-slate-800 rounded w-24 animate-pulse"/>
-                <div className="h-3 bg-slate-800 rounded w-16 animate-pulse"/>
+              <div key={i} className="flex gap-4 py-3 border-b border-slate-200 last:border-0">
+                <div className="h-3 bg-slate-100 rounded flex-1 animate-pulse"/>
+                <div className="h-3 bg-slate-100 rounded w-24 animate-pulse"/>
+                <div className="h-3 bg-slate-100 rounded w-16 animate-pulse"/>
               </div>
             ))}
           </div>

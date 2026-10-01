@@ -25,27 +25,27 @@ export function ClientMessagesView({ onNavigate: _onNavigate }: { onNavigate?: (
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-xl font-bold text-white flex items-center gap-2">
-          <MessageSquare className="w-6 h-6 text-[#0E9F8E]" />
+        <h1 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+          <MessageSquare className="w-6 h-6 text-[#2563EB]" />
           Messages &amp; Direct Enquiries
         </h1>
-        <p className="text-xs text-slate-400">Secure communication channel with Experts Consult recovery operations and finance team.</p>
+        <p className="text-xs text-slate-600">Secure communication channel with Experts Consult recovery operations and finance team.</p>
       </div>
 
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl p-6">
+      <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-xl p-6">
         <div className="space-y-3">
           {messages.map(m => (
-            <div key={m.id} className="p-4 bg-slate-950 border border-slate-800 rounded-xl flex items-center justify-between hover:border-slate-700 transition-colors">
+            <div key={m.id} className="p-4 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between hover:border-slate-300 transition-colors">
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="font-bold text-white text-xs">{m.title}</span>
-                  <span className={`px-2 py-0.5 rounded text-[10px] font-bold border ${m.status === 'Unread' ? 'bg-[#0E9F8E]/20 text-[#0E9F8E] border-[#0E9F8E]/30' : 'bg-slate-800 text-slate-400 border-slate-700'}`}>{m.status}</span>
+                  <span className="font-bold text-slate-900 text-xs">{m.title}</span>
+                  <span className={`px-2 py-0.5 rounded text-[10px] font-bold border ${m.status === 'Unread' ? 'bg-[#2563EB]/20 text-[#2563EB] border-[#2563EB]/30' : 'bg-slate-100 text-slate-600 border-slate-300'}`}>{m.status}</span>
                 </div>
-                <div className="text-xs text-slate-400 mt-1">From: {m.sender} · Date: <span className="font-mono text-slate-300">{m.date}</span></div>
+                <div className="text-xs text-slate-600 mt-1">From: {m.sender} · Date: <span className="font-mono text-slate-700">{m.date}</span></div>
               </div>
               <button
                 onClick={() => setSelectedMsg(m)}
-                className="px-3.5 py-2 bg-[#0E9F8E] hover:bg-[#0c8879] text-white rounded-xl text-xs font-semibold transition-colors"
+                className="px-3.5 py-2 bg-[#2563EB] hover:bg-[#1D4ED8] text-white rounded-xl text-xs font-semibold transition-colors"
               >
                 Reply
               </button>
@@ -56,20 +56,20 @@ export function ClientMessagesView({ onNavigate: _onNavigate }: { onNavigate?: (
 
       {/* Reply Dialog Modal */}
       {selectedMsg && (
-        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-md overflow-hidden shadow-2xl animate-in fade-in zoom-in-95 p-6 space-y-4">
-            <div className="flex justify-between items-center pb-3 border-b border-slate-800">
-              <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                <Send className="w-4 h-4 text-[#0E9F8E]" />
+        <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white border border-slate-200 rounded-2xl w-full max-w-md overflow-hidden shadow-2xl animate-in fade-in zoom-in-95 p-6 space-y-4">
+            <div className="flex justify-between items-center pb-3 border-b border-slate-200">
+              <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
+                <Send className="w-4 h-4 text-[#2563EB]" />
                 Reply to {selectedMsg.sender}
               </h3>
-              <button onClick={() => setSelectedMsg(null)} className="text-slate-400 hover:text-white">
+              <button onClick={() => setSelectedMsg(null)} className="text-slate-600 hover:text-slate-900">
                 <X className="w-4 h-4" />
               </button>
             </div>
 
-            <div className="text-xs text-slate-400">
-              Subject: <strong className="text-white">{selectedMsg.title}</strong>
+            <div className="text-xs text-slate-600">
+              Subject: <strong className="text-slate-900">{selectedMsg.title}</strong>
             </div>
 
             <textarea
@@ -77,19 +77,19 @@ export function ClientMessagesView({ onNavigate: _onNavigate }: { onNavigate?: (
               placeholder="Type your reply message here…"
               value={replyText}
               onChange={(e) => setReplyText(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-700 rounded-xl p-3 text-xs text-slate-100 focus:ring-2 focus:ring-[#0E9F8E] outline-none"
+              className="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 text-xs text-slate-900 focus:ring-2 focus:ring-[#2563EB] outline-none"
             />
 
             <div className="flex justify-end gap-3 pt-2">
               <button
                 onClick={() => setSelectedMsg(null)}
-                className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold rounded-xl"
+                className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-xl"
               >
                 Cancel
               </button>
               <button
                 onClick={handleSendReply}
-                className="px-4 py-2 bg-[#0E9F8E] hover:bg-[#0c8879] text-white text-xs font-semibold rounded-xl shadow-lg shadow-[#0E9F8E]/20"
+                className="px-4 py-2 bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs font-semibold rounded-xl shadow-lg shadow-[#2563EB]/20"
               >
                 Send Message
               </button>

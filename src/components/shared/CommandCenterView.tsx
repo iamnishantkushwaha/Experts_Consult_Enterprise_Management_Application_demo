@@ -26,14 +26,14 @@ export function CommandCenterView({ onNavigate }: { onNavigate?: (view: string) 
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-xl font-bold text-white flex items-center gap-2">
-            <LayoutDashboard className="w-6 h-6 text-[#0E9F8E]" />
+          <h1 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+            <LayoutDashboard className="w-6 h-6 text-[#2563EB]" />
             Executive Command Center
           </h1>
-          <p className="text-xs text-slate-400">Global recovery performance, risk, and cash at a glance.</p>
+          <p className="text-xs text-slate-600">Global recovery performance, risk, and cash at a glance.</p>
         </div>
         <div className="flex items-center gap-2">
-           <select className="bg-slate-900 border border-slate-700 text-slate-200 text-xs font-semibold rounded-xl px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-[#0E9F8E]">
+           <select className="bg-white border border-slate-300 text-slate-800 text-xs font-semibold rounded-xl px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-[#2563EB]">
               <option>Last 30 Days</option>
               <option>Year to Date</option>
               <option>All Time</option>
@@ -45,74 +45,74 @@ export function CommandCenterView({ onNavigate }: { onNavigate?: (view: string) 
         {/* Debt Assigned */}
         <div 
           onClick={() => onNavigate?.('clients_portfolios')}
-          className="bg-slate-900 border border-slate-800 rounded-2xl p-5 hover:border-slate-700 transition-colors cursor-pointer group"
+          className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-slate-300 transition-colors cursor-pointer group"
         >
           <div className="flex items-center justify-between mb-3">
              <div className="flex items-center gap-3">
-               <div className="w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center text-slate-400">
+               <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-slate-600">
                  <Wallet className="w-5 h-5" />
                </div>
-               <span className="text-sm font-bold text-slate-300 group-hover:text-white transition-colors">Debt Assigned (Active)</span>
+               <span className="text-sm font-bold text-slate-700 group-hover:text-slate-900 transition-colors">Debt Assigned (Active)</span>
              </div>
              <ArrowUpRight className="w-4 h-4 text-slate-500 opacity-0 group-hover:opacity-100 transition-opacity" />
           </div>
-          <div className="text-3xl font-extrabold text-white font-mono">{formatMoney(totalAssignedUSD, 'USD')}</div>
+          <div className="text-3xl font-extrabold text-slate-900 font-mono">{formatMoney(totalAssignedUSD, 'USD')}</div>
         </div>
 
         {/* Cash Recovered */}
         <div 
           onClick={() => onNavigate?.('reports')}
-          className="bg-slate-900 border border-[#0E9F8E]/40 rounded-2xl p-5 hover:border-[#0E9F8E] transition-colors cursor-pointer shadow-lg shadow-[#0E9F8E]/5 group"
+          className="bg-white border border-[#2563EB]/40 rounded-2xl p-5 hover:border-[#2563EB] transition-colors cursor-pointer shadow-lg shadow-[#2563EB]/5 group"
         >
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-[#0E9F8E]/20 flex items-center justify-center text-[#0E9F8E]">
+              <div className="w-10 h-10 rounded-xl bg-[#2563EB]/20 flex items-center justify-center text-[#2563EB]">
                 <TrendingUp className="w-5 h-5" />
               </div>
-              <span className="text-sm font-bold text-slate-300 group-hover:text-white transition-colors">Cash Recovered</span>
+              <span className="text-sm font-bold text-slate-700 group-hover:text-slate-900 transition-colors">Cash Recovered</span>
             </div>
-            <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-950 text-emerald-400">↑ 4.2%</span>
+            <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-50 text-emerald-600">↑ 4.2%</span>
           </div>
-          <div className="text-3xl font-extrabold text-[#0E9F8E] font-mono">{formatMoney(totalRecoveredUSD, 'USD')}</div>
+          <div className="text-3xl font-extrabold text-[#2563EB] font-mono">{formatMoney(totalRecoveredUSD, 'USD')}</div>
         </div>
 
         {/* Recovery Rate */}
         <div 
           onClick={() => onNavigate?.('country_performance')}
-          className="bg-slate-900 border border-slate-800 rounded-2xl p-5 hover:border-slate-700 transition-colors cursor-pointer group"
+          className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-slate-300 transition-colors cursor-pointer group"
         >
           <div className="flex items-center justify-between mb-3">
              <div className="flex items-center gap-3">
-               <span className="text-sm font-bold text-slate-300 group-hover:text-white transition-colors">Recovery Rate</span>
+               <span className="text-sm font-bold text-slate-700 group-hover:text-slate-900 transition-colors">Recovery Rate</span>
              </div>
              <ArrowUpRight className="w-4 h-4 text-slate-500 opacity-0 group-hover:opacity-100 transition-opacity" />
           </div>
-          <div className="text-3xl font-extrabold text-white font-mono">{recoveryRate.toFixed(1)}%</div>
+          <div className="text-3xl font-extrabold text-slate-900 font-mono">{recoveryRate.toFixed(1)}%</div>
         </div>
         
         {/* PTP Kept */}
         <div 
           onClick={() => onNavigate?.('reports')}
-          className="bg-slate-900 border border-slate-800 rounded-2xl p-5 hover:border-slate-700 transition-colors cursor-pointer group"
+          className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-slate-300 transition-colors cursor-pointer group"
         >
           <div className="flex items-center justify-between mb-3">
-             <span className="text-sm font-bold text-slate-300 group-hover:text-white transition-colors">Promise-to-Pay Kept</span>
+             <span className="text-sm font-bold text-slate-700 group-hover:text-slate-900 transition-colors">Promise-to-Pay Kept</span>
              <ArrowUpRight className="w-4 h-4 text-slate-500 opacity-0 group-hover:opacity-100 transition-opacity" />
           </div>
-          <div className="text-3xl font-extrabold text-white font-mono">61%</div>
+          <div className="text-3xl font-extrabold text-slate-900 font-mono">61%</div>
         </div>
 
         {/* Disputed Balance */}
         <div 
           onClick={() => onNavigate?.('risk_summary')}
-          className="bg-slate-900 border border-slate-800 rounded-2xl p-5 hover:border-slate-700 transition-colors cursor-pointer group"
+          className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-slate-300 transition-colors cursor-pointer group"
         >
           <div className="flex items-center justify-between mb-3">
              <div className="flex items-center gap-3">
-               <div className="w-10 h-10 rounded-xl bg-amber-950/50 flex items-center justify-center text-amber-500">
+               <div className="w-10 h-10 rounded-xl bg-amber-50/50 flex items-center justify-center text-amber-500">
                  <AlertTriangle className="w-5 h-5" />
                </div>
-               <span className="text-sm font-bold text-slate-300 group-hover:text-white transition-colors">Disputed Balance</span>
+               <span className="text-sm font-bold text-slate-700 group-hover:text-slate-900 transition-colors">Disputed Balance</span>
              </div>
              <ArrowUpRight className="w-4 h-4 text-slate-500 opacity-0 group-hover:opacity-100 transition-opacity" />
           </div>
@@ -121,32 +121,32 @@ export function CommandCenterView({ onNavigate }: { onNavigate?: (view: string) 
 
         {/* Unreconciled Funds */}
         <div 
-          className="bg-slate-900 border border-rose-900/50 rounded-2xl p-5 hover:border-rose-700 transition-colors cursor-pointer group relative overflow-hidden"
+          className="bg-white border border-rose-900/50 rounded-2xl p-5 hover:border-rose-700 transition-colors cursor-pointer group relative overflow-hidden"
         >
           <div className="absolute top-0 right-0 w-2 h-2 bg-rose-500 rounded-full m-4 animate-pulse"></div>
           <div className="flex items-center gap-3 mb-3">
-             <div className="w-10 h-10 rounded-xl bg-rose-950/50 flex items-center justify-center text-rose-500">
+             <div className="w-10 h-10 rounded-xl bg-rose-50/50 flex items-center justify-center text-rose-500">
                <ShieldAlert className="w-5 h-5" />
              </div>
-             <span className="text-sm font-bold text-slate-300 group-hover:text-white transition-colors">Unreconciled Funds</span>
+             <span className="text-sm font-bold text-slate-700 group-hover:text-slate-900 transition-colors">Unreconciled Funds</span>
           </div>
-          <div className="text-3xl font-extrabold text-white font-mono">USD 9.0K</div>
+          <div className="text-3xl font-extrabold text-slate-900 font-mono">USD 9.0K</div>
         </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6">
-          <h3 className="text-sm font-bold text-white mb-4">Top Clients by Recovery</h3>
+        <div className="bg-white border border-slate-200 rounded-2xl p-6">
+          <h3 className="text-sm font-bold text-slate-900 mb-4">Top Clients by Recovery</h3>
           <div className="space-y-4">
              {portfolios.slice(0, 4).map(p => (
                <div key={p.id} className="space-y-1">
                  <div className="flex justify-between text-xs">
-                   <span className="font-semibold text-slate-200">{p.clientName}</span>
-                   <span className="text-slate-400 font-mono">{formatMoney(p.recoveredUSD * 100, 'USD')}</span>
+                   <span className="font-semibold text-slate-800">{p.clientName}</span>
+                   <span className="text-slate-600 font-mono">{formatMoney(p.recoveredUSD * 100, 'USD')}</span>
                  </div>
-                 <div className="w-full bg-slate-950 rounded-full h-1.5 overflow-hidden">
+                 <div className="w-full bg-slate-50 rounded-full h-1.5 overflow-hidden">
                    <div 
-                     className="bg-[#0E9F8E] h-1.5 rounded-full" 
+                     className="bg-[#2563EB] h-1.5 rounded-full" 
                      style={{ width: `${Math.min(100, (p.recoveredUSD / 50000) * 100)}%` }}
                    ></div>
                  </div>
@@ -155,23 +155,23 @@ export function CommandCenterView({ onNavigate }: { onNavigate?: (view: string) 
           </div>
         </div>
 
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+        <div className="bg-white border border-slate-200 rounded-2xl p-6">
           <div className="flex justify-between items-center mb-4">
-             <h3 className="text-sm font-bold text-white">Active Alerts</h3>
-             <span className="px-2 py-0.5 bg-rose-950 text-rose-400 rounded text-[10px] font-bold">6 Action Required</span>
+             <h3 className="text-sm font-bold text-slate-900">Active Alerts</h3>
+             <span className="px-2 py-0.5 bg-rose-50 text-rose-600 rounded text-[10px] font-bold">6 Action Required</span>
           </div>
           <div className="space-y-2">
-             <div className="p-3 bg-slate-950 border border-slate-800 rounded-xl text-xs flex justify-between group">
-               <span className="text-slate-300">WO-0031 write-off USD 7,200 awaits your approval</span>
-               <button onClick={() => onNavigate?.('approvals')} className="text-[#0E9F8E] font-semibold opacity-0 group-hover:opacity-100 transition-opacity">Review</button>
+             <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs flex justify-between group">
+               <span className="text-slate-700">WO-0031 write-off USD 7,200 awaits your approval</span>
+               <button onClick={() => onNavigate?.('approvals')} className="text-[#2563EB] font-semibold opacity-0 group-hover:opacity-100 transition-opacity">Review</button>
              </div>
-             <div className="p-3 bg-slate-950 border border-slate-800 rounded-xl text-xs flex justify-between group">
-               <span className="text-slate-300">Unreconciled funds: 5 receipts</span>
-               <button className="text-[#0E9F8E] font-semibold opacity-0 group-hover:opacity-100 transition-opacity">Review</button>
+             <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs flex justify-between group">
+               <span className="text-slate-700">Unreconciled funds: 5 receipts</span>
+               <button className="text-[#2563EB] font-semibold opacity-0 group-hover:opacity-100 transition-opacity">Review</button>
              </div>
-             <div className="p-3 bg-slate-950 border border-slate-800 rounded-xl text-xs flex justify-between group">
-               <span className="text-slate-300">CMP-0190 high-severity complaint</span>
-               <button onClick={() => onNavigate?.('risk_summary')} className="text-[#0E9F8E] font-semibold opacity-0 group-hover:opacity-100 transition-opacity">Review</button>
+             <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs flex justify-between group">
+               <span className="text-slate-700">CMP-0190 high-severity complaint</span>
+               <button onClick={() => onNavigate?.('risk_summary')} className="text-[#2563EB] font-semibold opacity-0 group-hover:opacity-100 transition-opacity">Review</button>
              </div>
           </div>
         </div>

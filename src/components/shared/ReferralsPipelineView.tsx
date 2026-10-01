@@ -11,26 +11,26 @@ export function ReferralsPipelineView({ onNavigate }: { onNavigate?: (view: stri
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-xl font-bold text-white flex items-center gap-2">
-          <Scale className="w-6 h-6 text-[#0E9F8E]" />
+        <h1 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+          <Scale className="w-6 h-6 text-[#2563EB]" />
           Referrals Pipeline &amp; Case Assessment
         </h1>
-        <p className="text-xs text-slate-400">Incoming recovery-to-legal referrals, merit assessment, and counsel instruction gateway.</p>
+        <p className="text-xs text-slate-600">Incoming recovery-to-legal referrals, merit assessment, and counsel instruction gateway.</p>
       </div>
 
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl p-6">
+      <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-xl p-6">
         <div className="space-y-4">
           {legalMatters.map(m => (
-            <div key={m.id} className="p-4 bg-slate-950 border border-slate-800 rounded-xl flex items-center justify-between">
+            <div key={m.id} className="p-4 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between">
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="font-mono font-bold text-[#0E9F8E] text-xs">{m.id}</span>
-                  <span className="font-semibold text-white text-xs">— {m.debtorName}</span>
-                  <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-800 text-slate-300 border border-slate-700">{m.stage}</span>
+                  <span className="font-mono font-bold text-[#2563EB] text-xs">{m.id}</span>
+                  <span className="font-semibold text-slate-900 text-xs">— {m.debtorName}</span>
+                  <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-700 border border-slate-300">{m.stage}</span>
                 </div>
-                <div className="text-xs text-slate-400 mt-1">Claim Amount: <strong className="text-white font-mono">{formatMoney(m.claimMinor, m.currency)}</strong> · External Counsel: <span className="text-slate-200">{m.counselName}</span></div>
+                <div className="text-xs text-slate-600 mt-1">Claim Amount: <strong className="text-slate-900 font-mono">{formatMoney(m.claimMinor, m.currency)}</strong> · External Counsel: <span className="text-slate-800">{m.counselName}</span></div>
               </div>
-              <button onClick={() => onNavigate?.('account_detail')} className="px-3.5 py-2 bg-[#0E9F8E] hover:bg-[#0c8879] text-white rounded-xl text-xs font-semibold">
+              <button onClick={() => onNavigate?.('account_detail')} className="px-3.5 py-2 bg-[#2563EB] hover:bg-[#1D4ED8] text-white rounded-xl text-xs font-semibold">
                 Instruct Counsel
               </button>
             </div>
